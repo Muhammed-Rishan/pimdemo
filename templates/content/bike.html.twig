@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <h1>{{ pimcore_input("headline", {"width": 540}) }}</h1>
+
+    <div class="bike-info">
+        {% if editmode %}
+            {{ pimcore_relation("bike") }}
+        {% else %}
+            {% set bike = pimcore_relation("bike").element %}
+            {% if bike %}
+                <h2>{{ bike.name }}</h2>
+                <h3>{{ bike.sku }}</h3>
+                <div class="content">
+                    {% if bike.Bikes %}
+                        {{ bike.Bikes.thumbnail("Bikes").html|raw }}
+                    {% endif %}
+                    <br>
+                    {{ bike.description|raw }}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

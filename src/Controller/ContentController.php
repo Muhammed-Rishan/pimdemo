@@ -14,7 +14,7 @@ class ContentController extends FrontendController
     {
         return [];
     }
-    public function productAction(Request $request): Response
+    public function bikeAction(Request $request): Response
     {
         return $this->render('content/bike.html.twig');
     }

@@ -6,16 +6,17 @@
         {% if editmode %}
             {{ pimcore_relation("bike") }}
         {% else %}
-            {% set bike = pimcore_relation("bike").element %}
-            {% if bike %}
-                <h2>{{ bike.name }}</h2>
-                <h3>{{ bike.sku }}</h3>
+            {% set bck = pimcore_relation("bike").element %}
+            {% if bck %}
+                <h2>{{ bck.name }}</h2>
                 <div class="content">
-                    {% if bike.Bikes %}
-                        {{ bike.Bikes.thumbnail("Bikes").html|raw }}
+                    {% if bck.Bikes %}
+                        {{ bck.Bikes.thumbnail("Bikes").html|raw }}
                     {% endif %}
                     <br>
-                    {{ bike.description|raw }}
+                    {{ bck.description|raw }}
+                    <h3>SKU : {{ bck.sku }}</h3>
+                    <h3>Price : {{ bck.price }}</h3>
                 </div>
             {% endif %}
         {% endif %}

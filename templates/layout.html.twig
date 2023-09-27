@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+<div id="site">
+    <div id="logo">
+        <a href="http://www.pimcore.com/"><img src="/bundles/pimcoreadmin/img/matomo.svg"
+                                               style="width: 100px;" alt=""/></a>
+        <hr/>
+    </div>
+    {{ block('content') }}
+</div>
+</body>
+</html>

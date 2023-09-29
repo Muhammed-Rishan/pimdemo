@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    Room:
+                        items: {  }
+                        medias: {  }
+                        name: Room
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1695968856
+                        creationDate: 1695968845
+                        preserveAnimation: false

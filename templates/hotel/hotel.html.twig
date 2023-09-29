@@ -1,0 +1,240 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+
+{% endblock %}
+ {{ pimcore_head_title("Home") }}
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    {% block content %}
+        <div class="date-container">
+            {{ pimcore_date('myDate', {
+                'format': 'd.m.Y',
+                'outputFormat': '%d.%m.%Y',
+            }) }}
+        </div>
+        <div class="page-header">
+        <h1>{{ pimcore_input("headline",{'placeholder':'Headline'}, {"width": 440}) }}</h1>
+        </div>
+
+        <div class="hotel-info">
+            <h1>Welcome to Our Hotel</h1>
+            <p>Discover the luxury and comfort of our hotel. Book your stay with us today!</p>
+        </div>
+        <div class="content">
+            {{ pimcore_areablock("content", {
+                "allowed": ["hotel-brick","video","image", "pdf", "gallery"],
+            }) }}
+        </div>
+
+
+<br><hr>
+        {% for i in pimcore_iterate_block(pimcore_block('contentblock')) %}
+            <h2>{{ pimcore_input('subline') }}</h2>
+            {{ pimcore_wysiwyg('content') }}
+        {% endfor %}
+<br><hr>
+
+        <div class="room-card">
+            <div class="room-price">
+                <h2>Room Price</h2>
+                <label for="roomPrice">room price:</label>
+                {{ pimcore_numeric('roomPrice', {
+                    'label': 'Room Price',
+                    'min': 0,
+                    'max': 10000,
+                }) }}
+                {% if roomPrice is defined %}
+                    <p>The room price is: ${{ roomPrice }}</p>
+                {% else %}
+                {% endif %}
+            </div>
+
+            {% if editmode %}
+                {{ pimcore_select("room_type", {
+                    "store": [
+                        ["single", "Single"],
+                        ["double", "Double"],
+                        ["suite", "Suite"]
+                    ],
+                    "defaultValue" : "single"
+                }) }}
+            {% else %}
+                <div class="room-info">
+                    <h2>Room Information</h2>
+                    <p>
+                        {{ "Room Type" | trans }}: {{ pimcore_select("room_type").getData() | trans }}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+
+<br>
+            {% if editmode %}
+            {{ pimcore_multiselect('hotel_categories', {
+                'width': 200,
+                'height': 100,
+                'store': [
+                    ['room', 'Room'],
+                    ['restaurant', 'Restaurant'],
+                    ['spa', 'Spa'],
+                    ['pool', 'Pool'],
+                    ['events', 'Events'],
+                    ['other', 'Other'],
+                ]
+            }) }}
+        {% else %}
+            <div class="hotel-services">
+                <h2>{{ 'Services Offered' | trans }}</h2>
+                <p>
+                    {{ 'This hotel offers' | trans }}
+                    {% for categoryKey in pimcore_multiselect('hotel_categories').getData %}
+                        <span>{{ categoryKey | trans }}</span>
+                    {% endfor %}
+                    {% if pimcore_multiselect('hotel_categories').getData|length > 1 %}
+                        {{ 'services' | trans }}
+                    {% else %}
+                        {{ 'service' | trans }}
+                    {% endif %}
+                </p>
+            </div>
+        {% endif %}
+
+
+        <br>
+
+        <div class="room-grid">
+            {% for roomNumber in [101, 102, 103] %}
+                <div class="room-status">
+                    <h2>Room Cleaning Status</h2>
+                    <label for="cleanedCheckbox{{ roomNumber }}">Has this room been cleaned?</label>
+
+                    {{ pimcore_checkbox('roomStatus' ~ roomNumber, {
+                        'label': 'Cleaned',
+                        'id': 'cleanedCheckbox' ~ roomNumber
+                    }) }}
+
+                    {% if pimcore_checkbox('roomStatus' ~ roomNumber).isChecked() %}
+                        <div>
+                            <h3>Room Information</h3>
+                            <p>Status: Cleaned</p>
+                            <p>Room Number: {{ roomNumber }}</p>
+                            <p>Room Type: Single</p>
+                        </div>
+                    {% else %}
+                        <div>
+                            <h3>Room Information</h3>
+                            <p>Status: Not Cleaned</p>
+                            <p>Room Number: {{ roomNumber }}</p>
+                            <p>Room Type: Double</p>
+                        </div>
+                    {% endif %}
+                    <img class="room-image" src="{{ pimcore_image('myImage').getThumbnail('Room') }}" alt="Room Image">
+                </div>
+            {% endfor %}
+        </div>
+
+<br>
+        <div class="room-description">
+            <h2>Room Description</h2>
+            {{ pimcore_textarea("room_description", {
+                "nl2br": true,
+                "height": 300,
+                "placeholder": "Enter room description here"
+            }) }}
+        </div>
+        <p>
+            {{ "Visit our" | trans }}
+            {{ pimcore_link('rooms') }}
+        </p>
+
+<br>
+
+<br>
+        {% for i in pimcore_block('room').iterator %}
+            {% if editmode %}
+                {{ pimcore_relation("room") }}
+            {% else %}
+                {% set room = pimcore_relation("room").element %}
+                {% if room %}
+                    <p>Room Number {{ room.number|raw }}</p>
+                    <p>Description {{ room.description|raw }}</p>
+
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+<br>
+
+        <h1>{{ pimcore_input("headlin", {"width": 140}) }}</h1>
+        <section id="campaign_video">
+            {{ pimcore_video('campaignVideo', {
+                width: 700,
+                height: 400
+            }) }}
+        </section>
+
+        {% if editmode %}
+            {{ pimcore_table("hotelRooms", {
+                "width": 700,
+                "height": 1800,
+                "defaults": {
+                    "cols": 2,
+                    "rows": 3,
+                    "data": [
+                        ["Property", "Value"],
+                        ["Location", "Main Campus"],
+                        ["Head of Department", "John Doe"],
+                        ["Number of Students", "200"]
+                    ]
+                }
+            }) }}
+        {% else %}
+            {% set data = pimcore_table("hotelRooms").getData() %}
+            {% if data is not empty %}
+                <table>
+                    <tbody>
+                    {% for row in data %}
+                        <tr>
+                            <th>{{ row[0] }}</th>
+                            <td>{{ row[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No data available.</p>
+            {% endif %}
+        {% endif %}
+
+        <br>
+
+        {{ pimcore_image("myImage", {
+            "title": "Drag your image here",
+            "thumbnail": "Hotel"
+        }) }}
+<br>
+        <h4>{{ pimcore_input("headlines" ,{"width": 440}) }}</h4>
+        {{ pimcore_embed("socialWidgets") }}
+{#<br>#}
+        <div class="pdf">
+            {{ pimcore_pdf("myPdf", {"width": 540}) }}
+        </div>
+
+
+        <section id="renderlet-gallery">
+            {{
+            pimcore_renderlet('myGallery', {
+                "controller" : "App\\Controller\\HotelController::galleryAction",
+                "title" : "Drag an asset folder here to get a gallery",
+                "height" : 400
+            })
+            }}
+        </section>
+
+
+    {% endblock %}
+    {{ pimcore_snippet("mySnippet", {"width": 250, "height": 100}) }}
+{#    {% include 'footer.html.twig' %}#}
+
+{% endblock %}

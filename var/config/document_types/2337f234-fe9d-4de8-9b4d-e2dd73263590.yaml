@@ -1,0 +1,14 @@
+pimcore:
+    documents:
+        doc_types:
+            definitions:
+                2337f234-fe9d-4de8-9b4d-e2dd73263590:
+                    name: Demo
+                    group: ''
+                    controller: 'App\Controller\HotelController::demoAction'
+                    template: null
+                    type: page
+                    priority: 0
+                    creationDate: 1695990420
+                    modificationDate: 1695990438
+                    staticGeneratorEnabled: false

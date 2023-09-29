@@ -1,0 +1,11 @@
+{% if assets %}
+    <div class="my-gallery">
+        {% for asset in assets %}
+            {% if asset is instanceof('\\Pimcore\\Model\\Asset\\Image') %}
+                <div class="gallery-row">
+                    {{ asset.getThumbnail('Gallery').getHTML()|raw }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

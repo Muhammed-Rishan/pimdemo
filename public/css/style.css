@@ -58,7 +58,7 @@
     color: #BBB;
 }
 
-.#site ul {
+#site ul {
     padding: 10px 0 10px 20px;
     list-style: circle;
 }

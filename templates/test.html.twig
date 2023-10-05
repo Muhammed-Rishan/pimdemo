@@ -1,0 +1,202 @@
+{% block content %}
+    {% if editmode %}
+        {{ pimcore_relation("hotel") }}
+    {% else %}
+        {% set hotel = pimcore_relation("hotel").element %}
+        {% if hotel %}
+            <h2>{{ hotel.roomtype }}</h2>
+            <p>Price {{ hotel.price|raw }}</p>
+            <p>Description {{ hotel.description|raw }}</p>
+            {% if imageGalleryData is not empty %}
+                <h3>Image Gallery</h3>
+                <div class="image-gallery" style="max-width: 100%; overflow-x: auto; white-space: nowrap;">
+                    {% for image in imageGalleryData %}
+                        <div class="image-item" style="display: inline-block; margin-right: 10px;">
+                            <img src="{{ image.thumbnail('Gallery')}}" style="max-width: 100px; height: auto;">
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No images available in the gallery.</p>
+            {% endif %}
+
+            {% if videoElement %}
+                <h3>Video</h3>
+                <video controls >
+                    {{ videoElement.frontend() | raw }}
+                </video>
+            {% else %}
+                <p>No video available.</p>
+            {% endif %}
+
+
+            {% if roomnumber is defined %}
+                <h3>room number :{{ roomnumber }} </h3>
+            {% else %}
+                No data available
+            {% endif %}
+
+            {% if hotel.geopoint is not empty %}
+                <h3>Geopoints Data</h3>
+                <p>Latitude: {{ hotel.geopoint.getLatitude() }}</p>
+                <p>Longitude: {{ hotel.geopoint.getLongitude() }}</p>
+            {% endif %}
+
+            <h3>Localized Content:</h3>
+            <p>{{ Content }}</p>
+
+            <div>
+                <ul>
+                        {% for groupData in classificationStoreData %}
+                            <h2>{{ groupData.groupName }}</h2>
+                            <ul>
+                                {% for keyData in groupData.keys %}
+                                    <li>
+                                        <strong>{{ keyData.name }}: </strong>{{ keyData.value|join(', ') }}<br>
+                                        {% if keyData.isQuantityValue %}
+                                            (Quantity Value)
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                </ul>
+            </div>
+
+
+            {% if hotel.hotell is not null %}
+                {% for hotelitem in hotel.hotell.items %}
+                    <p>Room Type :{{ hotelitem.roomtype }}</p>
+                    <p>Country : {{ hotelitem.country }}</p>
+                    <p>Room Name: {{ hotelitem.roomname }}</p>
+                    <p>Room Image: <img src="{{ hotelitem.image.getThumbnail('Room') }}" alt="Room Image"></p>
+
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+
+    <hr>
+<hr>
+
+    {% for i in pimcore_block('room').iterator %}
+        {% if editmode %}
+            {{ pimcore_relation("room") }}
+        {% else %}
+            {% set room = pimcore_relation("room").element %}
+            {% if room %}
+                <h2>Room Number: {{ room.roomnumber }}</h2>
+                <p>Description: {{ room.description|raw }}</p>
+                <p>Price: {{ room.price|raw }}</p>
+
+                {% if room.standardroom is not null %}
+                    {% for roomitem in room.standardroom.items %}
+                        {% set currentDate = "now"|date("Y-m-d") %}
+                        {% if roomitem.checkindate > currentDate and roomitem.available %}
+                            <p>Bed Type: {{ roomitem.bedtype }}</p>
+                            <p>Occupancy: {{ roomitem.occupancy }}</p>
+                            <p>Range: {{ roomitem.range }}</p>
+                            <p>Check-in Date: {{ roomitem.checkindate }}</p>
+                            <p>Room Image: <img src="{{ roomitem.roomimage.getThumbnail('Room') }}" alt="Room Image"></p>
+                            <p>Available: {{ roomitem.available }}</p>
+                        {% else %}
+                            <p>Not Available</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+<hr>
+                {% if room.suite is not null %}
+                    {% for roomitem in room.suite.items %}
+                        <p>Check-in-date & Time: {{ roomitem.checkindatet }}</p>
+                        <p>Room Type: {{ roomitem.roomtype }}</p>
+                        <p>Guest Information:</p>
+                           <ul>
+                               <li>First Name: {{ roomitem.firstname }}</li>
+                               <li>Last Name: {{ roomitem.lastname }}</li>
+                               <li>Email: {{ roomitem.email }}</li>
+                               <li>Gender: {{ roomitem.gender }}</li>
+                           </ul>
+
+                        <p>Room Image: <img src="{{ roomitem.roomimage.getThumbnail('Room') }}" alt="Room Image"></p>
+                        <p>Room Color: {{ roomitem.roomcolor }}</p>
+                           {% if roomitem.friendly %}
+                               <p>Pet Friendly: Yes</p>
+                           {% else %}
+                               <p>Pet Friendly: No</p>
+                           {% endif %}
+                        <p><strong>Room: </strong><a href="{{ roomitem.roomdetails.getPath() }}">Room Details</a> </p>
+
+                    {% endfor %}
+                {% endif %}
+<hr>
+
+                {% if structuredTableData is not empty %}
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Price</th>
+                            <th>Occupancy</th>
+                            <th>Description</th>
+                            <th>Cleaned</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in structuredTableData %}
+                            <tr>
+                                <td>{{ row.price }}</td>
+                                <td>{{ row.occupancy }}</td>
+                                <td>{{ row.description }}</td>
+                                <td>{{ row.cleaned }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No structured table data available.</p>
+                {% endif %}
+
+<hr>
+                <h2>Hotel Room Information</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>{{ tableData[0][0] }}</th>
+                        <th>{{ tableData[0][1] }}</th>
+                        <th>{{ tableData[0][2] }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in tableData|slice(1) %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+<hr>
+               <p>relation</p>
+                {% if roomnumber is defined %}
+                    <h3>room number :{{ roomnumber }} </h3>
+                {% else %}
+                    No data available
+                {% endif %}
+
+                {% if hotel.geopoint is not empty %}
+                    <h3>Geopoints Data</h3>
+                    <p>Latitude: {{ hotel.geopoint.getLatitude() }}</p>
+                    <p>Longitude: {{ hotel.geopoint.getLongitude() }}</p>
+                {% endif %}
+
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+
+
+{% endblock %}

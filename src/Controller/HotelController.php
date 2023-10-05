@@ -4,9 +4,15 @@ namespace App\Controller;
 
 use Pimcore\Controller\FrontendController;
 use Pimcore\Model\Asset;
+use Pimcore\Model\DataObject\Data\QuantityValue;
+use Pimcore\Model\DataObject\Hotel;
+use Pimcore\Model\DataObject\Room;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Pimcore\Model\DataObject\Collectiontest;
+use Pimcore\Model\DataObject\Fieldcollection\Data\MyCollection;
+
 
 class HotelController extends FrontendController
 {
@@ -36,5 +42,103 @@ class HotelController extends FrontendController
     public function demoAction(Request $request): Response
     {
         return $this->render('demo.html.twig');
+    }
+
+    public function testAction(Request $request): Response
+    {
+
+        $test = Hotel::getById(id: 7);
+        $tests = Room::getById(id: 4);
+
+
+
+
+
+        $classificationStore = $test->getMyhotel();
+
+        foreach ($classificationStore->getGroups() as $group) {
+            $groupData = [
+                'groupName' => $group->getConfiguration()->getName(),
+                'keys' => []
+            ];
+
+            foreach ($group->getKeys() as $key) {
+                $keyConfiguration = $key->getConfiguration();
+
+                $value = $key->getValue();
+                if ($value instanceof \Pimcore\Model\DataObject\Data\QuantityValue) {
+                    $value = (string) $value;
+                }
+
+                $groupData['keys'][] = [
+                    'id' => $keyConfiguration->getId(),
+                    'name' => $keyConfiguration->getName(),
+                    'value' => $value,
+                    'isQuantityValue' => ($key->getFieldDefinition() instanceof QuantityValue),
+                ];
+            }
+
+            $classificationStoreData[] = $groupData;
+        }
+
+
+        $videoElement = null;
+        if ($test->getVideo()) {
+            $video = $test->getVideo();
+            $videoData = $video->getData();
+
+            if ($videoData) {
+                $videoElement = new \Pimcore\Model\Document\Editable\Video();
+                $videoElement->setConfig([
+                    "thumbnail" => "content",
+                    "width" => "400",
+                    "height" => 300,
+                    "attributes" => [
+                        "class" => "video-js custom-class",
+                        "preload" => "auto",
+                        "controls" => "",
+                        "data-custom-attr" => "my-test"
+                    ]
+                ]);
+                $videoElement->setType($video->getType());
+                $videoElement->setTitle($video->getTitle());
+                $videoElement->setDescription($video->getDescription());
+                $videoElement->setId(($videoData instanceof \Pimcore\Model\Asset) ? $videoData->getId() : $videoData);
+
+            }
+        }
+
+
+
+
+
+
+        $tableData = $tests->getTables();
+
+        $blockItems = $test->getBlock();
+        $firstBlockItem = $blockItems[0];
+        $roomnumber = $firstBlockItem["roomnumber"]->getData();
+        $imageGalleryData = $test->getImages();
+        $structuredTable = $tests->getTable();
+        $rows = $structuredTable->getData();
+
+        $languages = \Pimcore\Tool::getValidLanguages();
+        \Pimcore\Model\DataObject\Localizedfield::setGetFallbackValues(false);
+        $locale = 'de';
+        $content = $test->getName($locale);
+        $content = $test->getDescription($locale);
+        $geopoint = $test->getGeopoint();
+
+        return $this->render('test.html.twig', [
+            'geopoint' => $geopoint,
+            'roomnumber' => $roomnumber,
+            'Content' => $content,
+            'structuredTableData' => $rows,
+            'imageGalleryData' => $imageGalleryData,
+            'tableData' => $tableData,
+            'classificationStoreData' => $classificationStoreData,
+            'videoElement' => $videoElement,
+
+        ]);
     }
 }

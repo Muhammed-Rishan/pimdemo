@@ -1,0 +1,120 @@
+pimcore:
+    objects:
+        custom_layouts:
+            definitions:
+                8cf8eba9-93fb-4073-9f7c-0a17691ce49a:
+                    id: 8cf8eba9-93fb-4073-9f7c-0a17691ce49a
+                    name: demo
+                    description: ''
+                    creationDate: 1696500773
+                    modificationDate: 1696500839
+                    userOwner: 2
+                    classId: '3'
+                    layoutDefinitions:
+                        name: pimcore_root
+                        type: null
+                        region: null
+                        title: null
+                        width: 0
+                        height: 0
+                        collapsible: false
+                        collapsed: false
+                        bodyStyle: null
+                        datatype: layout
+                        children:
+                            -
+                                name: Layout
+                                type: null
+                                region: null
+                                title: null
+                                width: 0
+                                height: 0
+                                collapsible: false
+                                collapsed: false
+                                bodyStyle: null
+                                datatype: layout
+                                children:
+                                    -
+                                        name: images
+                                        title: Images
+                                        tooltip: ''
+                                        mandatory: false
+                                        noteditable: false
+                                        index: false
+                                        locked: false
+                                        style: ''
+                                        permissions: null
+                                        fieldtype: imageGallery
+                                        relationType: false
+                                        invisible: false
+                                        visibleGridView: false
+                                        visibleSearch: false
+                                        uploadPath: ''
+                                        ratioX: null
+                                        ratioY: null
+                                        predefinedDataTemplates: ''
+                                        height: ''
+                                        width: ''
+                                        datatype: data
+                                    -
+                                        name: video
+                                        title: Video
+                                        tooltip: ''
+                                        mandatory: false
+                                        noteditable: false
+                                        index: false
+                                        locked: false
+                                        style: ''
+                                        permissions: null
+                                        fieldtype: video
+                                        relationType: false
+                                        invisible: false
+                                        visibleGridView: false
+                                        visibleSearch: false
+                                        uploadPath: ''
+                                        allowedTypes: {  }
+                                        supportedTypes:
+                                            - asset
+                                            - youtube
+                                            - vimeo
+                                            - dailymotion
+                                        height: ''
+                                        width: ''
+                                        datatype: data
+                                    -
+                                        name: geopoint
+                                        title: 'Geographic Point'
+                                        tooltip: ''
+                                        mandatory: false
+                                        noteditable: false
+                                        index: false
+                                        locked: false
+                                        style: ''
+                                        permissions: null
+                                        fieldtype: geopoint
+                                        relationType: false
+                                        invisible: false
+                                        visibleGridView: false
+                                        visibleSearch: false
+                                        lat: 0
+                                        lng: 0
+                                        zoom: 1
+                                        mapType: roadmap
+                                        height: 180
+                                        width: ''
+                                        datatype: data
+                                locked: false
+                                fieldtype: panel
+                                layout: null
+                                border: false
+                                icon: null
+                                labelWidth: 100
+                                labelAlign: left
+                        locked: false
+                        fieldtype: panel
+                        layout: null
+                        border: false
+                        icon: null
+                        labelWidth: 100
+                        labelAlign: left
+                    default: 0

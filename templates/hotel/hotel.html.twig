@@ -151,19 +151,19 @@
 <br>
 
 <br>
-        {% for i in pimcore_block('room').iterator %}
-            {% if editmode %}
-                {{ pimcore_relation("room") }}
-            {% else %}
-                {% set room = pimcore_relation("room").element %}
-                {% if room %}
-                    <p>Room Number {{ room.number|raw }}</p>
-                    <p>Description {{ room.description|raw }}</p>
+{#        {% for i in pimcore_block('room').iterator %}#}
+{#            {% if editmode %}#}
+{#                {{ pimcore_relation("room") }}#}
+{#            {% else %}#}
+{#                {% set room = pimcore_relation("room").element %}#}
+{#                {% if room %}#}
+{#                    <p>Room Number {{ room.number|raw }}</p>#}
+{#                    <p>Description {{ room.description|raw }}</p>#}
 
-                {% endif %}
-            {% endif %}
+{#                {% endif %}#}
+{#            {% endif %}#}
 
-        {% endfor %}
+{#        {% endfor %}#}
 <br>
 
         <h1>{{ pimcore_input("headlin", {"width": 140}) }}</h1>
@@ -173,39 +173,6 @@
                 height: 400
             }) }}
         </section>
-
-        {% if editmode %}
-            {{ pimcore_table("hotelRooms", {
-                "width": 700,
-                "height": 1800,
-                "defaults": {
-                    "cols": 2,
-                    "rows": 3,
-                    "data": [
-                        ["Property", "Value"],
-                        ["Location", "Main Campus"],
-                        ["Head of Department", "John Doe"],
-                        ["Number of Students", "200"]
-                    ]
-                }
-            }) }}
-        {% else %}
-            {% set data = pimcore_table("hotelRooms").getData() %}
-            {% if data is not empty %}
-                <table>
-                    <tbody>
-                    {% for row in data %}
-                        <tr>
-                            <th>{{ row[0] }}</th>
-                            <td>{{ row[1] }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>No data available.</p>
-            {% endif %}
-        {% endif %}
 
         <br>
 

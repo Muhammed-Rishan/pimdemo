@@ -1,46 +1,29 @@
 <?php
 
 /**
- * Inheritance: no
- * Variants: no
- * Title: Room
- *
  * Fields Summary:
- * - roomnumber [numeric]
- * - description [input]
- * - price [numeric]
- * - Standardroom [objectbricks]
- * - Suite [objectbricks]
- * - Table [structuredTable]
- * - tables [table]
- * - relation [manyToOneRelation]
+ * - checkindatet [datetime]
+ * - roomtype [input]
+ * - roomimage [image]
+ * - firstname [firstname]
+ * - lastname [lastname]
+ * - gender [gender]
+ * - email [email]
+ * - roomcolor [rgbaColor]
+ * - friendly [checkbox]
+ * - roomdetails [link]
  */
 
-return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+return \Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'dao' => NULL,
-   'id' => '2',
-   'name' => 'Room',
-   'title' => 'Room',
-   'description' => '',
-   'creationDate' => NULL,
-   'modificationDate' => 1696485690,
-   'userOwner' => 2,
-   'userModification' => 2,
+   'key' => 'Suite',
    'parentClass' => '',
    'implementsInterfaces' => '',
-   'listingParentClass' => '',
-   'useTraits' => '',
-   'listingUseTraits' => '',
-   'encryption' => false,
-   'encryptedTables' => 
-  array (
-  ),
-   'allowInherit' => false,
-   'allowVariants' => false,
-   'showVariants' => false,
+   'title' => '',
+   'group' => '',
    'layoutDefinitions' => 
   \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-     'name' => 'pimcore_root',
+     'name' => NULL,
      'type' => NULL,
      'region' => NULL,
      'title' => NULL,
@@ -54,10 +37,10 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
     array (
       0 => 
       \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'name' => 'Layout',
+         'name' => 'Layouts',
          'type' => NULL,
          'region' => NULL,
-         'title' => '',
+         'title' => 'Layouts',
          'width' => '',
          'height' => '',
          'collapsible' => false,
@@ -67,9 +50,9 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'children' => 
         array (
           0 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'roomnumber',
-             'title' => 'Room Number',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
+             'name' => 'checkindatet',
+             'title' => 'Checkindatet',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -86,20 +69,14 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
              'defaultValue' => NULL,
-             'integer' => false,
-             'unsigned' => false,
-             'minValue' => NULL,
-             'maxValue' => NULL,
-             'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
-             'width' => '',
+             'useCurrentDate' => false,
+             'columnType' => 'bigint(20)',
              'defaultValueGenerator' => '',
           )),
           1 => 
           \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'description',
-             'title' => 'Description',
+             'name' => 'roomtype',
+             'title' => 'Room Type',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -127,9 +104,32 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           2 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'price',
-             'title' => 'Price',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+             'name' => 'roomimage',
+             'title' => 'Room image',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'uploadPath' => '',
+             'width' => '',
+             'height' => '',
+          )),
+          3 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Firstname::__set_state(array(
+             'name' => 'firstname',
+             'title' => 'Firstname',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -146,46 +146,20 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
              'defaultValue' => NULL,
-             'integer' => false,
-             'unsigned' => false,
-             'minValue' => NULL,
-             'maxValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
              'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
+             'showCharCount' => false,
              'width' => '',
              'defaultValueGenerator' => '',
           )),
-          3 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-             'name' => 'Standardroom',
-             'title' => 'Standard   Room',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'allowedTypes' => 
-            array (
-              0 => 'Standardroom',
-            ),
-             'maxItems' => NULL,
-             'border' => false,
-          )),
           4 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-             'name' => 'Suite',
-             'title' => 'Suite',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Lastname::__set_state(array(
+             'name' => 'lastname',
+             'title' => 'Lastname',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -201,17 +175,21 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'allowedTypes' => 
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
             array (
-              0 => 'Suite',
             ),
-             'maxItems' => NULL,
-             'border' => false,
+             'unique' => false,
+             'showCharCount' => false,
+             'width' => '',
+             'defaultValueGenerator' => '',
           )),
           5 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\StructuredTable::__set_state(array(
-             'name' => 'Table',
-             'title' => 'Table',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Gender::__set_state(array(
+             'name' => 'gender',
+             'title' => 'Gender',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -227,67 +205,19 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'labelWidth' => 0,
-             'labelFirstCell' => '',
-             'cols' => 
-            array (
-              0 => 
-              array (
-                'position' => 1,
-                'key' => 'price',
-                'label' => 'Price',
-                'type' => 'number',
-              ),
-              1 => 
-              array (
-                'type' => 'number',
-                'position' => 2,
-                'key' => 'occupancy',
-                'label' => 'Occupancy',
-              ),
-              2 => 
-              array (
-                'type' => 'text',
-                'position' => 3,
-                'key' => 'description',
-                'label' => 'Description',
-              ),
-              3 => 
-              array (
-                'type' => 'bool',
-                'position' => 4,
-                'key' => 'cleaned',
-                'label' => 'Cleaned',
-              ),
-            ),
-             'rows' => 
-            array (
-              0 => 
-              array (
-                'position' => 1,
-                'key' => 'standard',
-                'label' => 'Room',
-              ),
-              1 => 
-              array (
-                'position' => 2,
-                'key' => 'suite',
-                'label' => 'Suite',
-              ),
-              2 => 
-              array (
-                'position' => 3,
-                'key' => 'luxury',
-                'label' => 'Luxury',
-              ),
-            ),
-             'height' => '',
-             'width' => '',
+             'options' => NULL,
+             'defaultValue' => NULL,
+             'optionsProviderClass' => NULL,
+             'optionsProviderData' => NULL,
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+             'width' => NULL,
           )),
           6 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Table::__set_state(array(
-             'name' => 'tables',
-             'title' => 'Tables',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Email::__set_state(array(
+             'name' => 'email',
+             'title' => 'Email',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -303,24 +233,21 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'cols' => NULL,
-             'colsFixed' => false,
-             'rows' => NULL,
-             'rowsFixed' => false,
-             'data' => 'one|two|three
-four|five|six
-seven|eight|nine',
-             'columnConfigActivated' => false,
-             'columnConfig' => 
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
             array (
             ),
-             'height' => 300,
-             'width' => 600,
+             'unique' => false,
+             'showCharCount' => false,
+             'width' => '',
+             'defaultValueGenerator' => '',
           )),
           7 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
-             'name' => 'relation',
-             'title' => 'Relation',
+          \Pimcore\Model\DataObject\ClassDefinition\Data\RgbaColor::__set_state(array(
+             'name' => 'roomcolor',
+             'title' => 'Room color',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -329,35 +256,65 @@ seven|eight|nine',
              'style' => '',
              'permissions' => NULL,
              'fieldtype' => '',
-             'relationType' => true,
+             'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
             ),
-             'classes' => 
-            array (
-              0 => 
-              array (
-                'classes' => 'Hotel',
-              ),
-            ),
-             'displayMode' => 'grid',
-             'pathFormatterClass' => '',
-             'assetInlineDownloadAllowed' => false,
-             'assetUploadPath' => '',
-             'allowToClearRelation' => true,
-             'objectsAllowed' => true,
-             'assetsAllowed' => false,
-             'assetTypes' => 
-            array (
-            ),
-             'documentsAllowed' => false,
-             'documentTypes' => 
-            array (
-            ),
              'width' => '',
+          )),
+          8 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Checkbox::__set_state(array(
+             'name' => 'friendly',
+             'title' => 'Friendly',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValue' => NULL,
+             'defaultValueGenerator' => '',
+          )),
+          9 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Link::__set_state(array(
+             'name' => 'roomdetails',
+             'title' => 'Room Details',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+            ),
+             'allowedTargets' => 
+            array (
+            ),
+             'disabledFields' => 
+            array (
+            ),
           )),
         ),
          'locked' => false,
@@ -383,47 +340,16 @@ seven|eight|nine',
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'icon' => '',
-   'group' => '',
-   'showAppLoggerTab' => false,
-   'linkGeneratorReference' => '',
-   'previewGeneratorReference' => '',
-   'compositeIndices' => 
-  array (
-  ),
-   'showFieldLookup' => false,
-   'propertyVisibility' => 
-  array (
-    'grid' => 
-    array (
-      'id' => true,
-      'key' => false,
-      'path' => true,
-      'published' => true,
-      'modificationDate' => true,
-      'creationDate' => true,
-    ),
-    'search' => 
-    array (
-      'id' => true,
-      'key' => false,
-      'path' => true,
-      'published' => true,
-      'modificationDate' => true,
-      'creationDate' => true,
-    ),
-  ),
-   'enableGridLocking' => false,
-   'deletedDataComponents' => 
-  array (
-  ),
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),
-   'fieldDefinitionsCache' => 
+   'classDefinitions' => 
   array (
-  ),
-   'activeDispatchingEvents' => 
-  array (
+    0 => 
+    array (
+      'classname' => 'Room',
+      'fieldname' => 'Suite',
+    ),
   ),
 ));

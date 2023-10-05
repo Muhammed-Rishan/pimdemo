@@ -16,6 +16,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1695968856
+                        modificationDate: 1696325321
                         creationDate: 1695968845
                         preserveAnimation: false

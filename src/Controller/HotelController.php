@@ -7,6 +7,7 @@ use Pimcore\Model\Asset;
 use Pimcore\Model\DataObject\Data\QuantityValue;
 use Pimcore\Model\DataObject\Hotel;
 use Pimcore\Model\DataObject\Room;
+use Pimcore\Model\Document\Link;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,6 +45,9 @@ class HotelController extends FrontendController
         return $this->render('demo.html.twig');
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testAction(Request $request): Response
     {
 
@@ -52,6 +56,29 @@ class HotelController extends FrontendController
 
 
 
+
+        $d = Link::getById(18);
+        echo($d->getHref());
+
+
+        $class = DataObject\ClassDefinition::getById('2');
+        $fields = $class->getFieldDefinitions();
+
+        foreach ($fields as $field) {
+            $field->setLocked(true);
+        }
+
+
+
+
+
+        $hotel = \Pimcore\Model\DataObject\Room::getById(4);
+        $hotelBrick = $hotel->getSuite();
+/*        var_dump($hotelBrick);
+        die();*/
+        if ($hotelBrick === null) {
+            throw $this->createNotFoundException('Employee not found');
+        }
 
 
         $classificationStore = $test->getMyhotel();

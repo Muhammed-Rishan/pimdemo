@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Inheritance: no
- * Variants: no
+ * Inheritance: yes
+ * Variants: yes
  *
  * Fields Summary:
  * - roomtype [input]
@@ -30,21 +30,21 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1696498114,
+   'modificationDate' => 1696855716,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
-   'implementsInterfaces' => '',
+   'implementsInterfaces' => '\\App\\Model\\Product\\TransmissionInterface',
    'listingParentClass' => '',
-   'useTraits' => '',
+   'useTraits' => '\\App\\Traits\\TransmissionTrait',
    'listingUseTraits' => '',
    'encryption' => false,
    'encryptedTables' => 
   array (
   ),
-   'allowInherit' => false,
-   'allowVariants' => false,
-   'showVariants' => false,
+   'allowInherit' => true,
+   'allowVariants' => true,
+   'showVariants' => true,
    'layoutDefinitions' => 
   \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Inheritance: no
- * Variants: no
+ * Inheritance: yes
+ * Variants: yes
  * Title: Room
  *
  * Fields Summary:
@@ -23,7 +23,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => 'Room',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1696485690,
+   'modificationDate' => 1696849856,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -35,9 +35,9 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'encryptedTables' => 
   array (
   ),
-   'allowInherit' => false,
-   'allowVariants' => false,
-   'showVariants' => false,
+   'allowInherit' => true,
+   'allowVariants' => true,
+   'showVariants' => true,
    'layoutDefinitions' => 
   \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
@@ -383,10 +383,10 @@ seven|eight|nine',
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'icon' => '',
+   'icon' => '/bundles/pimcoreadmin/img/icon/heart.png',
    'group' => '',
    'showAppLoggerTab' => false,
-   'linkGeneratorReference' => '',
+   'linkGeneratorReference' => 'App\\Website\\LinkGenerator\\RoomLinkGenerator',
    'previewGeneratorReference' => '',
    'compositeIndices' => 
   array (

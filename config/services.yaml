@@ -73,3 +73,11 @@ services:
     # App\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+
+
+  ###Link Generator
+
+    App\Website\LinkGenerator\RoomLinkGenerator:
+        public: true
+
+   #

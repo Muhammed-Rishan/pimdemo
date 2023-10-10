@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Pimcore\Controller\FrontendController;
 use Pimcore\Model\Asset;
+use Pimcore\Model\DataObject\ClassDefinition;
 use Pimcore\Model\DataObject\Data\QuantityValue;
 use Pimcore\Model\DataObject\Hotel;
 use Pimcore\Model\DataObject\Room;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Pimcore\Model\DataObject\Collectiontest;
 use Pimcore\Model\DataObject\Fieldcollection\Data\MyCollection;
-
+use Symfony\Component\Routing\Annotation\Route;
 
 class HotelController extends FrontendController
 {
@@ -54,28 +55,21 @@ class HotelController extends FrontendController
         $test = Hotel::getById(id: 7);
         $tests = Room::getById(id: 4);
 
+        $id = Link::getById(19);
+        $link = $id->getHref();
 
 
-
-        $d = Link::getById(18);
-        echo($d->getHref());
-
-
-        $class = DataObject\ClassDefinition::getById('2');
+        $class = ClassDefinition::getById(4);
         $fields = $class->getFieldDefinitions();
 
         foreach ($fields as $field) {
             $field->setLocked(true);
         }
-
-
-
-
+        $class->save();
 
         $hotel = \Pimcore\Model\DataObject\Room::getById(4);
         $hotelBrick = $hotel->getSuite();
-/*        var_dump($hotelBrick);
-        die();*/
+
         if ($hotelBrick === null) {
             throw $this->createNotFoundException('Employee not found');
         }
@@ -165,7 +159,9 @@ class HotelController extends FrontendController
             'tableData' => $tableData,
             'classificationStoreData' => $classificationStoreData,
             'videoElement' => $videoElement,
+            'link' =>$link,
 
         ]);
     }
+
 }

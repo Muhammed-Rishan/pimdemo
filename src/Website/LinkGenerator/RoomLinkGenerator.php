@@ -26,11 +26,11 @@ class RoomLinkGenerator implements LinkGeneratorInterface
     protected function generateCustomUrl(DataObject\Room $object): string
     {
         $roomNumber = $object->getRoomnumber();
-        $description = $object->getDescription();
+//        $description = $object->getDescription();
 
 
         // Example URL format: /room/{roomNumber}-{description}
-        $customUrl = "/room";
+        $customUrl = '/'.$roomNumber ;
 
         return $customUrl;
 

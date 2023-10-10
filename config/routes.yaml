@@ -4,3 +4,9 @@ _pimcore:
 app:
     resource: "../src/Controller/"
     type: annotation
+
+room_preview:
+    path: '/room/{roomNumber}/{description}'
+    controller: 'App\Controller\RoomController::show'
+    requirements:
+        roomNumber: '\d+' # Ensure roomNumber is a number

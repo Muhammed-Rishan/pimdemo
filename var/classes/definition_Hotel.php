@@ -30,7 +30,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1696929498,
+   'modificationDate' => 1697026486,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -463,7 +463,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     array (
                     ),
                      'toolbarConfig' => '',
-                     'excludeFromSearchIndex' => false,
+                     'excludeFromSearchIndex' => true,
                      'maxCharacters' => '',
                      'height' => '',
                      'width' => '',
@@ -473,7 +473,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'layout' => NULL,
                  'maxTabs' => 10,
                  'border' => true,
-                 'provideSplitView' => false,
+                 'provideSplitView' => true,
                  'tabPosition' => 'top',
                  'hideLabelsWhenTabsReached' => NULL,
                  'referencedFields' => 
@@ -508,7 +508,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 array (
                 ),
                  'labelWidth' => 0,
-                 'localized' => true,
+                 'localized' => false,
                  'storeId' => 1,
                  'hideEmptyData' => false,
                  'disallowAddRemove' => false,

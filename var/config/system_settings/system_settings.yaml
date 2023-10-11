@@ -25,6 +25,7 @@ pimcore:
                 en: ''
                 de: ''
                 fr: ''
+                hi: ''
     objects:
         versions:
             days: null

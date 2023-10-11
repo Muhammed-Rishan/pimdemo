@@ -13,19 +13,20 @@ class NewController extends FrontendController
 {
     /**
      * @Route("/new")
+     * @throws \Exception
      */
     public function newAction(Request $request): Response
     {
 
         $customer = Customer::getById(9);
-//
-//        $fields = $customer->getName();
-//
-//        foreach ($fields as $field) {
-//            $field->setLocked(true);
-//        }
-//
-//        $customer->save();
+
+        $fields = $customer->getName();
+
+        foreach ($fields as $field) {
+            $field->setLocked(true);
+        }
+
+        $customer->save();
 
         return $this->render('new.html.twig', [
             'customer' => $customer,

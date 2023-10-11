@@ -6,7 +6,31 @@ app:
     type: annotation
 
 room_preview:
-    path: '/room/{roomNumber}/{description}'
+    path: '/room/{roomNumber}'
     controller: 'App\Controller\RoomController::show'
     requirements:
-        roomNumber: '\d+' # Ensure roomNumber is a number
+        roomNumber: '\d+'
+
+asset_controller:
+    path: '/assets'
+    controller: 'App\Controller\AssetController'
+
+create_asset:
+    path: '/create-asset'
+    controller: 'App\Controller\AssetController::createAsset'
+
+update_asset:
+    path: '/update-asset/26'
+    controller: 'App\Controller\AssetController::updateAsset'
+    requirements:
+        id: '\d+'
+
+delete_asset:
+    path: '/delete-asset/29'
+    controller: 'App\Controller\AssetController::deleteAsset'
+    requirements:
+        id: '\d+'
+
+hotel_display:
+    path: /hotel/7
+    controller: App\Controller\HotelController::displayHotel

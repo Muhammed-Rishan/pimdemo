@@ -26,14 +26,15 @@ class RoomLinkGenerator implements LinkGeneratorInterface
     protected function generateCustomUrl(DataObject\Room $object): string
     {
         $roomNumber = $object->getRoomnumber();
-//        $description = $object->getDescription();
 
 
-        // Example URL format: /room/{roomNumber}-{description}
-        $customUrl = '/'.$roomNumber ;
+
+
+        $customUrl = '/room/'.$roomNumber ;
 
         return $customUrl;
 
-
+//        return $this->router->generate('room_preview', ['roomNumber' => $roomNumber]);
     }
 }
+

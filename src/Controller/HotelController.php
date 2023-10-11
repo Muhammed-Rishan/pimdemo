@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Pimcore\Model\DataObject\Collectiontest;
 use Pimcore\Model\DataObject\Fieldcollection\Data\MyCollection;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class HotelController extends FrontendController
 {
@@ -124,14 +125,10 @@ class HotelController extends FrontendController
                 $videoElement->setType($video->getType());
                 $videoElement->setTitle($video->getTitle());
                 $videoElement->setDescription($video->getDescription());
-                $videoElement->setId(($videoData instanceof \Pimcore\Model\Asset) ? $videoData->getId() : $videoData);
+                $videoElement->setId(($videoData instanceof \Pimcore\Model\Asset) ? $videoData->getId(11) : $videoData);
 
             }
         }
-
-
-
-
 
 
         $tableData = $tests->getTables();
@@ -145,15 +142,16 @@ class HotelController extends FrontendController
 
         $languages = \Pimcore\Tool::getValidLanguages();
         \Pimcore\Model\DataObject\Localizedfield::setGetFallbackValues(false);
-        $locale = 'de';
-        $content = $test->getName($locale);
-        $content = $test->getDescription($locale);
+        $locale = '';
+        $contents = $test->getName($locale);
+        $contents = $test->getDescription($locale);
+
         $geopoint = $test->getGeopoint();
 
         return $this->render('test.html.twig', [
             'geopoint' => $geopoint,
             'roomnumber' => $roomnumber,
-            'Content' => $content,
+            'Contents' => $contents,
             'structuredTableData' => $rows,
             'imageGalleryData' => $imageGalleryData,
             'tableData' => $tableData,

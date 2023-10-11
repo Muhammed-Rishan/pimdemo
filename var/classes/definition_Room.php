@@ -14,6 +14,8 @@
  * - Table [structuredTable]
  * - tables [table]
  * - relation [manyToOneRelation]
+ * - localizedfields [localizedfields]
+ * -- descri [input]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -23,7 +25,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => 'Room',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1696922456,
+   'modificationDate' => 1697026478,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -359,6 +361,74 @@ seven|eight|nine',
             ),
              'width' => '',
           )),
+          8 => 
+          \Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
+             'name' => 'localizedfields',
+             'title' => 'check',
+             'tooltip' => NULL,
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => NULL,
+             'permissions' => NULL,
+             'fieldtype' => '',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => true,
+             'visibleSearch' => true,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'children' => 
+            array (
+              0 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'name' => 'descri',
+                 'title' => 'Descri',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => '',
+                 'defaultValueGenerator' => '',
+              )),
+            ),
+             'region' => NULL,
+             'layout' => NULL,
+             'maxTabs' => NULL,
+             'border' => false,
+             'provideSplitView' => false,
+             'tabPosition' => 'top',
+             'hideLabelsWhenTabsReached' => NULL,
+             'referencedFields' => 
+            array (
+            ),
+             'permissionView' => NULL,
+             'permissionEdit' => NULL,
+             'labelWidth' => 100,
+             'labelAlign' => 'left',
+             'fieldDefinitionsCache' => NULL,
+          )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
@@ -383,7 +453,7 @@ seven|eight|nine',
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'icon' => '/bundles/pimcoreadmin/img/icon/heart.png',
+   'icon' => '/bundles/pimcoreadmin/img/icon/note.png',
    'group' => '',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => 'App\\Website\\LinkGenerator\\RoomLinkGenerator',

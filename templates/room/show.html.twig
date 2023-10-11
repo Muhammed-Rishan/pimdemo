@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Room Details</title>
+</head>
+<body>
+<h1>Room Details</h1>
+{% if roomDetails is defined and roomDetails is not empty %}
+    <p>Room Number: {{ roomDetails.getRoomnumber() }}</p>
+    <p>Description: {{ roomDetails.getDescription() }}</p>
+{% else %}
+    <p>Room not found.</p>
+{% endif %}
+</body>
+</html>

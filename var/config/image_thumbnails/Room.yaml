@@ -4,26 +4,7 @@ pimcore:
             thumbnails:
                 definitions:
                     Room:
-                        items:
-                            -
-                                method: frame
-                                arguments:
-                                    width: 400
-                                    height: 400
-                                    forceResize: true
-                            -
-                                method: setBackgroundColor
-                                arguments:
-                                    color: '#00c1c8c8'
-                            -
-                                method: roundCorners
-                                arguments:
-                                    width: 10
-                                    height: 16
-                            -
-                                method: rotate
-                                arguments:
-                                    angle: 45
+                        items: {  }
                         medias: {  }
                         name: Room
                         description: ''
@@ -35,6 +16,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1697008289
+                        modificationDate: 1697712079
                         creationDate: 1695968845
                         preserveAnimation: false

@@ -8,11 +8,13 @@ pimcore:
             - de
             - fr
             - hi
+            - ml
         fallback_languages:
             en: ''
             de: ''
             fr: ''
             hi: ''
+            ml: ''
         default_language: en
         debug_admin_translations: false
     documents:
@@ -26,6 +28,7 @@ pimcore:
                 de: ''
                 fr: ''
                 hi: ''
+                ml: ''
     objects:
         versions:
             days: null
@@ -34,4 +37,6 @@ pimcore:
         versions:
             days: null
             steps: null
-    email: {  }
+    email:
+        debug:
+            email_addresses: rishan.k@codilar.com

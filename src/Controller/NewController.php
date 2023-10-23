@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Model\DataObject\Service;
+use Pimcore\Bundle\ApplicationLoggerBundle\ApplicationLogger;
 
 class NewController extends FrontendController
 {
@@ -54,5 +55,18 @@ class NewController extends FrontendController
         $response .= '<h2>Context</h2>';
         $response .= array_to_html_attribute_string($context);
         return new Response($response);
+    }
+    public function testsAction(ApplicationLogger $logger): void
+    {
+        $logger->error('Your error message');
+        $logger->alert('Your alert');
+        $logger->debug('Your debug message', ['foo' => 'bar']);
+    }
+
+    public function anotherAction(): void
+    {
+
+        $logger = $this->get(ApplicationLogger::class);
+        $logger->error('Your error message');
     }
 }

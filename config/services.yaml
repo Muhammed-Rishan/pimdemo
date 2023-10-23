@@ -46,6 +46,40 @@ services:
         tags:
             - { name: pimcore.link_generator }
 
+    App\Model\Product\AdminStyle\RoomAdminStyle:
+        tags:
+            - { name: pimcore.admin.elementstyle, element: Pimcore\Model\DataObject\Hotel }
+
+    App\Service\CustomService:
+        arguments:
+            $customLogLogger: '@monolog.logger.custom_log'
+
+    App\EventListener\SessionBagListener:
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    App\Service\NewService:
+        arguments:
+            $myLogLogger: '@monolog.logger.new_log'
+
+    App\EventListener\TestListener:
+        tags:
+            - { name: kernel.event_listener, event: pimcore.asset.preUpdate, method: onPreUpdate }
+            - { name: kernel.event_listener, event: pimcore.document.preUpdate, method: onPreUpdate }
+            - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onPreUpdate }
+            - { name: kernel.event_listener, event: pimcore.asset.preAdd, method: onPreAdd }
+            - { name: kernel.event_listener, event: pimcore.document.preAdd, method: onPreAdd }
+            - { name: kernel.event_listener, event: pimcore.dataobject.preAdd, method: onPreAdd }
+            - { name: kernel.event_listener, event: pimcore.asset.preDelete, method: onPreDelete }
+            - { name: kernel.event_listener, event: pimcore.document.preDelete, method: onPreDelete }
+            - { name: kernel.event_listener, event: pimcore.dataobject.preDelete, method: onPreDelete }
+
+
+        #    security.password_encoder:
+#        class: Symfony\Component\Security\Core\Encoder\PlaintextPasswordEncoder
+
+#    app.device_detector:
+#        class: DeviceDetector\DeviceDetector
 
         #
     # CONTROLLERS

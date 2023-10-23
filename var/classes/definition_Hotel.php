@@ -11,6 +11,7 @@
  * - geopoint [geopoint]
  * - geopolygon [geopolygon]
  * - images [imageGallery]
+ * - user [user]
  * - consent [consent]
  * - video [video]
  * - checkbox [checkbox]
@@ -30,7 +31,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1697026486,
+   'modificationDate' => 1697445152,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -251,6 +252,35 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'width' => '',
               )),
               6 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\User::__set_state(array(
+                 'name' => 'user',
+                 'title' => 'User',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'options' => NULL,
+                 'defaultValue' => NULL,
+                 'optionsProviderClass' => NULL,
+                 'optionsProviderData' => NULL,
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'defaultValueGenerator' => '',
+                 'width' => NULL,
+                 'unique' => false,
+              )),
+              7 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Consent::__set_state(array(
                  'name' => 'consent',
                  'title' => 'Consent',
@@ -272,7 +302,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValue' => 0,
                  'width' => '',
               )),
-              7 => 
+              8 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
                  'name' => 'video',
                  'title' => 'Video',
@@ -305,7 +335,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'height' => '',
                  'width' => '',
               )),
-              8 => 
+              9 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Checkbox::__set_state(array(
                  'name' => 'checkbox',
                  'title' => 'Checkbox',
@@ -327,7 +357,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValue' => 1,
                  'defaultValueGenerator' => '',
               )),
-              9 => 
+              10 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
                  'name' => 'block',
                  'title' => 'Block',
@@ -392,7 +422,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 ),
                  'fieldDefinitionsCache' => NULL,
               )),
-              10 => 
+              11 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
                  'name' => 'localizedfields',
                  'title' => '',
@@ -485,7 +515,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'labelAlign' => 'left',
                  'fieldDefinitionsCache' => NULL,
               )),
-              11 => 
+              12 => 
               \Pimcore\Model\DataObject\ClassDefinition\Data\Classificationstore::__set_state(array(
                  'name' => 'myhotel',
                  'title' => 'Myhotel',
@@ -616,7 +646,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'icon' => '/bundles/pimcoreadmin/img/icon/eye.png',
+   'icon' => '/bundles/pimcoreadmin/img/icon/build.png',
    'group' => '',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',

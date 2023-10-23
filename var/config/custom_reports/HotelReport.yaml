@@ -1,0 +1,158 @@
+pimcore_custom_reports:
+    definitions:
+        HotelReport:
+            name: HotelReport
+            sql: ''
+            dataSourceConfig:
+                -
+                    sql: "Select *\n"
+                    from: objects
+                    where: ''
+                    groupby: ''
+                    type: sql
+            columnConfiguration:
+                -
+                    name: id
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-1
+                -
+                    name: parentId
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-2
+                -
+                    name: type
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-3
+                -
+                    name: key
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-4
+                -
+                    name: path
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-5
+                -
+                    name: index
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-6
+                -
+                    name: published
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-7
+                -
+                    name: creationDate
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-8
+                -
+                    name: modificationDate
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-9
+                -
+                    name: userOwner
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-10
+                -
+                    name: userModification
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-11
+                -
+                    name: classId
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-12
+                -
+                    name: className
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-13
+                -
+                    name: childrenSortBy
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-14
+                -
+                    name: childrenSortOrder
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-15
+                -
+                    name: versionCount
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel6126-16
+            niceName: 'Hotel Reports '
+            group: Hotels
+            groupIconClass: ''
+            iconClass: ''
+            menuShortcut: true
+            reportClass: ''
+            chartType: pie
+            pieColumn: creationDate
+            pieLabelColumn: creationDate
+            xAxis: null
+            yAxis: {  }
+            modificationDate: 1697171675
+            creationDate: 1697135026
+            shareGlobally: true
+            sharedUserNames:
+                - admin
+            sharedRoleNames: {  }

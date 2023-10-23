@@ -63,6 +63,12 @@
                 </ul>
             </div>
 
+<hr>
+            <p>Parent: {{ customParent }}</p>
+            <h1>Heading: {{ customValue }}</h1>
+
+            {{ translate|raw }}
+<hr>
 
             {% if hotel.hotell is not null %}
                 {% for hotelitem in hotel.hotell.items %}
@@ -78,6 +84,7 @@
 
 
     <hr>
+
 <hr>
 
     {% for i in pimcore_block('room').iterator %}
@@ -198,13 +205,55 @@
                     <p>Longitude: {{ hotel.geopoint.getLongitude() }}</p>
                 {% endif %}
 
+                <ul class="foo">
+                    <li><a href=" {{ link }}"> {{ link }}</a></li>
+                </ul>
+
+<hr>
+                <p>fetch the data lng</p>
+                <br>
+                {{ translate|raw }}
+
+<hr>
+
+                <h1>System Settings - Valid Languages</h1>
+                <ul>
+                    {% for language in bar %}
+                        <li>{{ language }}</li>
+                    {% endfor %}
+                </ul>
+<hr>
+                <ul>
+                    {% for key, value in pimcore_website_config() %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+
             {% endif %}
         {% endif %}
     {% endfor %}
 
-    <ul class="foo">
-        <li><a href=" {{ link }}"> {{ link }}</a></li>
-    </ul>
+
+{#    <p>Device Type: {{ deviceType }}</p>#}
+
+{#    {% if deviceType == 'desktop' %}#}
+{#        <p>This is content for desktop or tablet.</p>#}
+{#    {% elseif deviceType == 'phone' %}#}
+{#        <p>This is content for phones.</p>#}
+{#    {% endif %}#}
+
+
+{#    to fetch the property#}
+{#    {% set hideNavigation = document.getProperty('maincheck') %}#}
+
+
+    {#    <p>Recaptcha Public Key: {{ recaptchaKeyPublic }}</p>#}
+
+
+{#    {{  pimcore_website_config('googleMapsKey') }}#}
+
+{#    {{ pimcore_website_config('googleMapsKey', 'NOT SET') }}#}
+
 
 
 

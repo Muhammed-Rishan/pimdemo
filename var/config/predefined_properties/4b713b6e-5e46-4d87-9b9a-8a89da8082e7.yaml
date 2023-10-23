@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                4b713b6e-5e46-4d87-9b9a-8a89da8082e7:
+                    name: New
+                    description: sdfsdf
+                    key: new_key
+                    type: text
+                    data: ''
+                    config: ''
+                    ctype: object
+                    inheritable: false
+                    creationDate: 1697132791
+                    modificationDate: 1697132805

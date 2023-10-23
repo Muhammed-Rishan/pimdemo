@@ -1,0 +1,8 @@
+product:
+    resource: "@ProductBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+
+products:
+    path: /product/{id}
+    controller: ProductBundle\Controller\ProductController::indexAction

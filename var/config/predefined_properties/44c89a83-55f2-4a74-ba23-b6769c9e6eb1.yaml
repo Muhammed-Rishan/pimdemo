@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                44c89a83-55f2-4a74-ba23-b6769c9e6eb1:
+                    name: maincheck
+                    description: 'check to check'
+                    key: new_key
+                    type: select
+                    data: '3'
+                    config: '2'
+                    ctype: document
+                    inheritable: true
+                    creationDate: 1697132595
+                    modificationDate: 1697132625

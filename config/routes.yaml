@@ -34,3 +34,20 @@ delete_asset:
 hotel_display:
     path: /hotel/7
     controller: App\Controller\HotelController::displayHotel
+
+custom_log:
+    path: /custom-log
+    controller: App\Controller\CustomLogController::someAction
+
+#my_custom_admin_entry_point:
+#    path: /my-custom-login-page
+#    controller: Pimcore\Bundle\CoreBundle\Controller\PublicServicesController::customAdminEntryPointAction
+
+my_custom_login_page:
+    path: /my-custom-login-page
+    controller: App\Controller\CustomAdminController::loginAction
+
+your_route:
+    path: /your-route
+    controller: App\Controller\SessionController::yourAction
+

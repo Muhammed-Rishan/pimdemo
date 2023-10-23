@@ -1,0 +1,5 @@
+demo:
+    resource: "@DemoBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+

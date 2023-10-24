@@ -8,23 +8,23 @@ use Pimcore\Model\Exception\NotFoundException;
 class Vote extends AbstractModel
 {
     public ?int $id = null;
-
     public ?string $username = null;
-
     public ?int $score = null;
 
     /**
-     * get score by id
+     * Load a vote by ID.
+     *
+     * @param int $id
+     * @return self|null
      */
     public static function getById(int $id): ?self
     {
         try {
-            $obj = new self;
+            $obj = new self();
             $obj->getDao()->getById($id);
             return $obj;
-        }
-        catch (NotFoundException $ex) {
-            \Pimcore\Logger::warn("Vote with id $id not found");
+        } catch (NotFoundException $ex) {
+            \Pimcore\Logger::warn("Vote with ID $id not found");
         }
 
         return null;
@@ -58,5 +58,9 @@ class Vote extends AbstractModel
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function save()
+    {
     }
 }

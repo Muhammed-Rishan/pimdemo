@@ -14,5 +14,6 @@ return [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     DemoBundle\DemoBundle::class => ['all' => true],
     CheckBundle\CheckBundle::class => ['all' => true],
-    ProductBundle\ProductBundle::class => ['all' => true]
+    ProductBundle\ProductBundle::class => ['all' => true],
+    SpyBundle\SpyBundle::class => ['all' => true],
 ];

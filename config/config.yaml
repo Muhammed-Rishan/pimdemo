@@ -41,6 +41,11 @@ pimcore:
             - src/DemoBundle
             - src/CheckBundle
             - src/ProductBundle
+            - bundles/SpyBundle
+
+
+
+
 
 
     # IMPORTANT Notice!

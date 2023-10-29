@@ -12,5 +12,15 @@ monolog:
             path: '%kernel.logs_dir%/new_service.log'
             channels: [ 'new_log' ]
 
-    channels: ['new_log', 'custom_log']
+        main:
+            type: stream
+            path: '%kernel.logs_dir%/environment.log'
+            level: debug
+
+        customs_log:
+            type: stream
+            path: '%kernel.project_dir%/bundles/SpyBundle/config/log/customs.log'
+            level: debug
+
+    channels: ['new_log', 'custom_log', 'customs', 'environment.log' ]
 

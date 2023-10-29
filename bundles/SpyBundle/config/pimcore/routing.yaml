@@ -1,0 +1,5 @@
+spy:
+    resource: "@SpyBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+

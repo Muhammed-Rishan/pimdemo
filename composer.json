@@ -35,7 +35,8 @@
       "Pimcore\\Model\\DataObject\\": "var/classes/DataObject",
       "DemoBundle\\": "src/DemoBundle/src",
       "CheckBundle\\": "src/CheckBundle/src",
-      "ProductBundle\\": "bundles/ProductBundle/src"
+      "ProductBundle\\": "bundles/ProductBundle/src",
+      "SpyBundle\\": "bundles/SpyBundle/src"
     }
   },
   "autoload-dev": {

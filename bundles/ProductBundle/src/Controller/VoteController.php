@@ -14,11 +14,11 @@ class VoteController extends AbstractController
     /**
      * @Route("/vote")
      */
-    public function votAction(Request $request, $id): Response
+    public function votAction(Request $request): Response
     {
         // Create or load a vote (you can modify this part as needed)
         $vote = new Vote();
-        $vote->setScore(3);
+        $vote->setScore(4);
         $vote->setUsername('foobar!' . mt_rand(1, 999));
         $vote->save();
 
@@ -34,8 +34,9 @@ class VoteController extends AbstractController
     public function listVotes(): Response
     {
 
-        $list = Listing::create();
-        $list->setCondition("score > 2");
+//        $list = Listing::create();
+        $list = new Listing();
+        $list->setCondition("score > 3");
         $votes = $list->load();
         var_dump($list);
 

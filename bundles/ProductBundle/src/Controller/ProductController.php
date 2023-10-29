@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Controller;
 
+
 use Pimcore\Controller\FrontendController;
 use Pimcore\Model\DataObject\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
     /**
      * @Route("/product/{id}", name="products")
      */
+
     public function indexAction(Request $request, int $id): Response
+
     {
         $object = Product::getById($id);
 
@@ -22,5 +25,6 @@ use Symfony\Component\Routing\Annotation\Route;
             'object' => $object
         ]);
     }
+
 }
 

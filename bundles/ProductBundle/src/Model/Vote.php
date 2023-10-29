@@ -59,5 +59,4 @@ class Vote extends AbstractModel
     {
         return $this->id;
     }
-
 }

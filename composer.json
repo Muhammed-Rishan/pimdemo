@@ -37,6 +37,7 @@
       "CheckBundle\\": "src/CheckBundle/src",
       "ProductBundle\\": "bundles/ProductBundle/src",
       "SpyBundle\\": "bundles/SpyBundle/src"
+
     }
   },
   "autoload-dev": {

@@ -5,7 +5,6 @@ pimcore.plugin.SpyBundle = Class.create({
     },
 
     pimcoreReady: function (e) {
-        // Check if the user has specific permissions
         const user = pimcore.globalmanager.get("user");
         const permissions = user.permissions;
 
@@ -32,6 +31,7 @@ pimcore.plugin.SpyBundle = Class.create({
 
         const store = Ext.create('Ext.data.Store', {
             fields: ['id','adminuserid', 'action', 'timestamp'],
+            pageSize: 100,
             proxy: {
                 type: 'ajax',
                 url: '/spy',
@@ -54,6 +54,12 @@ pimcore.plugin.SpyBundle = Class.create({
                 {text: "Timestamp", dataIndex: "timestamp"},
             ],
             closable: true,
+            bbar: Ext.create('Ext.PagingToolbar', {
+                store: store,
+                displayInfo: true,
+                displayMsg: 'Displaying {0} - {1} of {2}',
+                emptyMsg: "No data to display",
+            }),
         });
 
 

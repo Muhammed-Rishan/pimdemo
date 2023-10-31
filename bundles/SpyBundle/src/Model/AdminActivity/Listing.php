@@ -8,7 +8,7 @@ use Pimcore\Model\Paginator\PaginateListingInterface;
 class Listing extends Model\Listing\AbstractListing implements PaginateListingInterface
 {
     /**
-     * List of Votes.
+     * List of .
      */
     public ?array $data = null;
 

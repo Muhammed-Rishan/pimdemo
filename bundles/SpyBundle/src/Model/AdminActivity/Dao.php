@@ -3,6 +3,7 @@
 // src/VendorName/SpyBundle/Model/Dao.php
 namespace SpyBundle\Model\AdminActivity;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 use Pimcore\Model\Dao\AbstractDao;
 use Pimcore\Model\Exception\NotFoundException;
@@ -82,4 +83,5 @@ class Dao extends AbstractDao
     {
         $this->db->delete($this->tableName, ["id" => $this->model->getId()]);
     }
+
 }

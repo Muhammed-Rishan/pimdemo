@@ -1,6 +1,5 @@
 <?php
 
-// src/VendorName/SpyBundle/EventListener/AdminActivityListener.php
 namespace SpyBundle\EventListener;
 
 use Psr\Log\LoggerInterface;
@@ -67,15 +66,13 @@ class AdminActivityListener implements EventSubscriberInterface
 
     protected function extractAdminUserId(): ?int
     {
-        // Implement your logic to extract the admin user ID.
-        // You can use the TokenStorage or other sources to get the admin user ID.
         $user = $this->userResolver->getUser();
 
         if ($user) {
             return $user->getId();
         }
 
-        return 0; // Set a default value if the admin user is not found.
+        return 1;
     }
 
     protected function determineAction(Request $request): string
@@ -94,10 +91,10 @@ class AdminActivityListener implements EventSubscriberInterface
             return 'classes';
         } elseif (strpos($pathInfo, '/admin/login') !== false) {
             return 'login';
-        } elseif (strpos($pathInfo, '/admin/#') !== false) {
+        } elseif (strpos($pathInfo, '/admin/logout') !== false) {
             return 'logout';
         } else {
-            return 'unknown'; // You can set a default value for other cases.
+            return 'unknown';
         }
     }
 }

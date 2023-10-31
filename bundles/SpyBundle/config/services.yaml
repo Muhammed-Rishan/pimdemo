@@ -22,6 +22,10 @@ services:
         tags:
             - { name: 'kernel.event_subscriber' }
 
+    SpyBundle\Model\AdminActivity\Dao:
+        autowire: true
+
+
 # add more services, or override services that need manual wiring
 #    SpyBundle\ExampleClass:
 #        arguments:
@@ -29,9 +33,9 @@ services:
 #            - "plain_value"
 #            - "%parameter%"
 
-    spy_bundle.customs_logger:
-        class: Monolog\Logger
-        arguments: [ 'customs' ]
-        calls:
-            - [ pushHandler, [ '@monolog.handler.customs_log' ] ]
-        public: true
+#    spy_bundle.customs_logger:
+#        class: Monolog\Logger
+#        arguments: [ 'customs' ]
+#        calls:
+#            - [ pushHandler, [ '@monolog.handler.customs_log' ] ]
+#        public: true

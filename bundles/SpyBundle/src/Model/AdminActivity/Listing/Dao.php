@@ -6,7 +6,7 @@ use Pimcore\Model\Listing;
 use App\Model;
 use Doctrine\DBAL\Query\QueryBuilder as DoctrineQueryBuilder;
 use Pimcore\Model\Listing\Dao\QueryBuilderHelperTrait;
-use ProductBundle\Model\Vote;
+use SpyBundle\Model\AdminActivity;
 
 class Dao extends Listing\Dao\AbstractDao
 {
@@ -42,7 +42,6 @@ class Dao extends Listing\Dao\AbstractDao
     /**
      * Loads objects from the database.
      *
-     * @return Vote[]
      * @throws \Exception
      */
     public function load(): array
@@ -52,7 +51,7 @@ class Dao extends Listing\Dao\AbstractDao
 
         $objects = array();
         foreach ($list as $id) {
-            if ($object = Vote::getById($id)) {
+            if ($object = AdminActivity::getById($id)) {
                 $objects[] = $object;
             }
         }

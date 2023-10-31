@@ -1,6 +1,5 @@
 <?php
 
-// src/VendorName/SpyBundle/Model/AdminActivity.php
 namespace SpyBundle\Model;
 
 use Pimcore\Model\AbstractModel;
@@ -12,7 +11,7 @@ class AdminActivity extends AbstractModel
 //    public $adminuserid;
     public $action;
     public $timestamp;
-    private $admin_user_id;
+    private $adminuserid;
 
 
     /**
@@ -45,12 +44,12 @@ class AdminActivity extends AbstractModel
 
     public function setAdminUserId($adminUserId): void
     {
-        $this->admin_user_id = $adminUserId;
+        $this->adminuserid = $adminUserId;
     }
 
     public function getAdminUserId()
     {
-        return $this->admin_user_id;
+        return $this->adminuserid;
     }
 
     public function setAction($action): void

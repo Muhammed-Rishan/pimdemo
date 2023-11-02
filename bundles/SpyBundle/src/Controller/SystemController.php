@@ -31,4 +31,19 @@ class SystemController extends AbstractController
 
         return new JsonResponse(['success' => true, 'message' => 'Data saved successfully']);
     }
+    /**
+     * @Route("/load-data", name="loadData")
+     */
+    public function loadDataAction(): JsonResponse
+    {
+        $configPath = $this->getParameter('kernel.project_dir') . '/bundles/SpyBundle/config/systems.yaml';
+
+        if (file_exists($configPath)) {
+            $yamlData = Yaml::parse(file_get_contents($configPath));
+
+            return new JsonResponse(['success' => true, 'data' => $yamlData]);
+        }
+
+        return new JsonResponse(['success' => false, 'message' => 'System configuration file not found']);
+    }
 }

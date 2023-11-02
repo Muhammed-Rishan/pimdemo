@@ -6,6 +6,25 @@ pimcore.plugin.Button = Class.create({
         document.addEventListener(pimcore.events.pimcoreReady, this.pimcoreReady.bind(this));
     },
 
+    loadAndPopulateData: function () {
+        // Make an Ajax request to load the saved data
+        Ext.Ajax.request({
+            url: '/load-data', // Replace with your Symfony route to load data from systems.yaml
+            method: 'GET',
+            success: function (response) {
+                const result = Ext.decode(response.responseText);
+                if (result.success) {
+                    const data = result.data;
+                    Ext.getCmp('hotelTypeCombo').setValue(data.hotelType);
+                    Ext.getCmp('roomTypeCombo').setValue(data.roomType);
+                    Ext.getCmp('hotelNameTextField').setValue(data.hotelName);
+                    Ext.getCmp('descriptionTextarea').setValue(data.description);
+                    Ext.getCmp('checked').setValue(data.checkboxValue);
+                }
+            }
+        });
+    },
+
     pimcoreReady: function (e) {
         const user = pimcore.globalmanager.get("user");
         const permissions = user.permissions;
@@ -37,6 +56,7 @@ pimcore.plugin.Button = Class.create({
                 // submenu.show(customMenuItem, 'tr-br?');
                 submenu.showAt([customMenuItemPosition[0] + customMenuItem.offsetWidth, customMenuItemPosition[1]]);
             };
+            // this.loadAndPopulateData();
         }
     },
 
@@ -61,14 +81,16 @@ pimcore.plugin.Button = Class.create({
                                 xtype: 'combo',
                                 fieldLabel: 'Hotel Type',
                                 store: ['Luxury Hotel', 'Business Hotel', 'Resort', 'Boutique Hotel'],
-                                id: 'hotelTypeCombo'
+                                id: 'hotelTypeCombo',
+                                editable: false,
                             },
                             {
                                 xtype: 'combo',
                                 multiSelect: true,
                                 fieldLabel: 'Room Type',
                                 store: ['Single', 'Double', 'Suite', 'Luxury'],
-                                id: 'roomTypeCombo'
+                                id: 'roomTypeCombo',
+                                editable: false,
                             },
                             {
                                 xtype: 'textfield',
@@ -105,6 +127,7 @@ pimcore.plugin.Button = Class.create({
                     {
                         xtype: 'button',
                         text: 'Save',
+                        iconCls: 'pimcore_icon_save',
                         handler: this.saveData.bind(this)
                     },
                 ],
@@ -113,6 +136,7 @@ pimcore.plugin.Button = Class.create({
             const mainPanel = Ext.getCmp("pimcore_panel_tabs");
             mainPanel.add(this.systemPanel);
             mainPanel.setActiveTab(this.systemPanel);
+            this.loadAndPopulateData();
         }
 
         this.systemPanel.on('beforeclose', function (tab) {

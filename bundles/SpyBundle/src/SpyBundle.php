@@ -19,6 +19,7 @@ class SpyBundle extends AbstractPimcoreBundle implements PimcoreBundleAdminClass
     {
         return [
             '/bundles/spy/js/pimcore/startup.js',
+            '/bundles/spy/js/pimcore/Button.js',
         ];
     }
 

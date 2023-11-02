@@ -17,4 +17,5 @@ return [
     ProductBundle\ProductBundle::class => ['all' => true],
     SpyBundle\SpyBundle::class => ['all' => true],
 
+
 ];

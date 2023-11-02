@@ -31,7 +31,7 @@ pimcore.plugin.SpyBundle = Class.create({
 
         const store = Ext.create('Ext.data.Store', {
             fields: ['id','adminuserid', 'action', 'timestamp'],
-            pageSize: 100,
+            pageSize: 500,
             proxy: {
                 type: 'ajax',
                 url: '/spy',

@@ -1,0 +1,8 @@
+hotelType: 'Luxury Hotel'
+roomType:
+    - Suite
+    - Luxury
+    - Double
+hotelName: Apollo
+description: ftweffdehjfsdufu
+checkboxValue: true

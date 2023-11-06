@@ -1,8 +1,6 @@
-hotelType: 'Luxury Hotel'
+hotelType: Resort
 roomType:
-    - Double
-    - Suite
-    - Luxury
-hotelName: Appollo
-description: uytrew
+    - Single
+hotelName: Apollo
+description: fthgvujkkyhuyhjg
 checkboxValue: true

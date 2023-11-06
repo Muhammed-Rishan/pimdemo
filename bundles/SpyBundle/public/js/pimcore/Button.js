@@ -7,9 +7,9 @@ pimcore.plugin.Button = Class.create({
     },
 
     loadAndPopulateData: function () {
-        // Make an Ajax request to load the saved data
+
         Ext.Ajax.request({
-            url: '/load-data', // Replace with your Symfony route to load data from systems.yaml
+            url: '/load-data',
             method: 'GET',
             success: function (response) {
                 const result = Ext.decode(response.responseText);
@@ -102,6 +102,11 @@ pimcore.plugin.Button = Class.create({
                                 fieldLabel: 'Description',
                                 id: 'descriptionTextarea'
                             },
+                            {
+                                xtype: 'checkbox',
+                                boxLabel: 'This is a checkbox field with some content',
+                                id: 'checked'
+                            },
                         ],
                     },
                     {
@@ -110,11 +115,11 @@ pimcore.plugin.Button = Class.create({
                         collapsible: true,
                         collapsed: true,
                         items: [
-                            {
-                                xtype: 'checkbox',
-                                boxLabel: 'This is a checkbox field with some content',
-                                id: 'checked'
-                            },
+                            // {
+                            //     xtype: 'checkbox',
+                            //     boxLabel: 'This is a checkbox field with some content',
+                            //     id: 'checked'
+                            // },
                             // {
                             //     xtype: 'textfield',
                             //     fieldLabel: 'Text Field',
@@ -144,7 +149,32 @@ pimcore.plugin.Button = Class.create({
         }.bind(this));
     },
 
+    validateForm: function () {
+
+        const hotelName = Ext.getCmp('hotelNameTextField').getValue();
+        const description = Ext.getCmp('descriptionTextarea').getValue();
+        // const checkboxValue = Ext.getCmp('checked').getValue();
+
+
+        if (!hotelName) {
+            Ext.Msg.alert('Error', 'Hotel Name is a mandatory field.');
+            return false;
+        }
+
+        if (!description) {
+            Ext.Msg.alert('Error', 'Description is a mandatory field.');
+            return false;
+        }
+
+
+        return true;
+    },
+
     saveData: function () {
+        if (!this.validateForm()) {
+            return;
+        }
+
         const hotelType = Ext.getCmp('hotelTypeCombo').getValue();
         const roomType = Ext.getCmp('roomTypeCombo').getValue();
         const hotelName = Ext.getCmp('hotelNameTextField').getValue();

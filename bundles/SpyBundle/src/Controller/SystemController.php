@@ -5,6 +5,7 @@ namespace SpyBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -46,4 +47,31 @@ class SystemController extends AbstractController
 
         return new JsonResponse(['success' => false, 'message' => 'System configuration file not found']);
     }
+
+
+    /**
+     * @Route("/data", name="Data")
+     */
+    public function showAction(Request $request): Response
+    {
+        $yamlFilePath = $this->getParameter('kernel.project_dir') . '/bundles/SpyBundle/config/systems.yaml';
+
+        if (file_exists($yamlFilePath)) {
+            $yamlData = file_get_contents($yamlFilePath);
+            $parsedData = Yaml::parse($yamlData);
+//            dump($parsedData);
+
+            $isChecked = isset($parsedData['checkboxValue']) && $parsedData['checkboxValue'] === true;
+
+            if ($isChecked) {
+
+                return $this->render('@SpyBundle/spy.html.twig', ['parsedData' => $parsedData]);
+            } else {
+                return new JsonResponse(['error' => 'Access denied. Please check your permissions.']);
+            }
+        } else {
+            return new JsonResponse(['error' => 'YAML file not found']);
+        }
+    }
+
 }

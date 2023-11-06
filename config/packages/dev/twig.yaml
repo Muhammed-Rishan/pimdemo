@@ -3,4 +3,5 @@ twig:
     paths:
         '%kernel.project_dir%/src/DemoBundle/src/templates': DemoBundle
         '%kernel.project_dir%/bundles/ProductBundle/src/templates': ProductBundle
+        '%kernel.project_dir%/bundles/SpyBundle/src/templates': SpyBundle
 

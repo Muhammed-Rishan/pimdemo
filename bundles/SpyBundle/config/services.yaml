@@ -25,6 +25,9 @@ services:
     SpyBundle\Model\AdminActivity\Dao:
         autowire: true
 
+    SpyBundle\Command\DataObjectsCommand:
+        tags: [ 'console.command' ]
+
 
 # add more services, or override services that need manual wiring
 #    SpyBundle\ExampleClass:

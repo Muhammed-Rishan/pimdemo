@@ -1,0 +1,22 @@
+product:
+    resource: "@ConnectBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+
+# config/routes.yaml
+
+#api_dataobject:
+#    resource: '@ConnectBundle/src/Controller/Api/DataObjectController.php'
+#    type: annotation
+
+#    connect_data_object_api_create:
+#        path: /api/data-object/create
+#        defaults: { _controller: 'ConnectBundle:DataObjectApi:create' }
+#        methods: [ POST ]
+#
+#    connect_data_object_api_fetch:
+#        path: /api/data-object/fetch
+#        defaults: { _controller: 'ConnectBundle:DataObjectApi:fetch' }
+#        methods: [ GET ]

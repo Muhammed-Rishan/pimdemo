@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                5bd2b69f-c684-49fd-bb8a-0c81d3effd81:
+                    name: 'custom Property'
+                    description: 'custom Description'
+                    key: new_key
+                    type: text
+                    data: ''
+                    config: ''
+                    ctype: object
+                    inheritable: false
+                    creationDate: 1697094820
+                    modificationDate: 1697132639

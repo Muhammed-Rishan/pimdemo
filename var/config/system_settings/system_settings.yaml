@@ -1,0 +1,42 @@
+pimcore:
+    general:
+        domain: ''
+        redirect_to_maindomain: false
+        language: en
+        valid_languages:
+            - en
+            - de
+            - fr
+            - hi
+            - ml
+        fallback_languages:
+            en: ''
+            de: ''
+            fr: ''
+            hi: ''
+            ml: ''
+        default_language: en
+        debug_admin_translations: false
+    documents:
+        versions:
+            days: null
+            steps: null
+        error_pages:
+            default: ''
+            localized:
+                en: ''
+                de: ''
+                fr: ''
+                hi: ''
+                ml: ''
+    objects:
+        versions:
+            days: null
+            steps: null
+    assets:
+        versions:
+            days: null
+            steps: null
+    email:
+        debug:
+            email_addresses: rishan.k@codilar.com

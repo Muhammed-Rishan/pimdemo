@@ -1,0 +1,13 @@
+{% for i in pimcore_block('customer').iterator %}
+    {% if editmode %}
+        {{ pimcore_relation("customer") }}
+    {% else %}
+        {% set custom = pimcore_relation("customer").element %}
+    {% endif %}
+
+{#    {% if custom %}#}
+{#        {{ customer.customText }}#}
+{#    {% else %}#}
+
+{#    {% endif %}#}
+{% endfor %}

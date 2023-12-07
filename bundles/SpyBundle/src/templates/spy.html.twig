@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Settings</title>
+</head>
+<body>
+<h1>System Settings</h1>
+
+<ul>
+    <li><strong>Hotel Type:</strong> {{ parsedData.hotelType }}</li>
+    <li><strong>Room Types:</strong>
+        <ul>
+            {% for roomType in parsedData.roomType %}
+                <li>{{ roomType }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li><strong>Hotel Name:</strong> {{ parsedData.hotelName }}</li>
+    <li><strong>Description:</strong> {{ parsedData.description }}</li>
+</ul>
+</body>
+</html>

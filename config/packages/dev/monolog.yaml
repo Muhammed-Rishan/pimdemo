@@ -1,0 +1,29 @@
+monolog:
+    handlers:
+        custom_handler:
+            type: stream
+            path: '%kernel.logs_dir%/custom.log'
+            level: debug
+            channels: ['custom_log']
+
+        new_service_handler:
+            level: debug
+            type: stream
+            path: '%kernel.logs_dir%/new_service.log'
+            channels: [ 'new_log' ]
+
+        main:
+            type: stream
+            path: '%kernel.logs_dir%/environment.log'
+            level: debug
+
+      
+
+#        customs_log:
+#            type: stream
+#            path: '%kernel.project_dir%/bundles/SpyBundle/config/log/customs.log'
+#            level: debug
+
+    channels: ['new_log', 'custom_log', 'environment.log' ]
+
+

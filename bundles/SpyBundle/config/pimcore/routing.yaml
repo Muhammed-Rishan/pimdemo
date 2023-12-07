@@ -1,0 +1,25 @@
+spy:
+    resource: "@SpyBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+
+
+spy_data_get:
+    path: /api/dataobjects/{id}
+    defaults:
+        _controller: 'SpyBundle\Controller\Api\ApiController::getDataObject'
+        _format: json
+    requirements:
+        id: \d+
+    methods: [GET]
+
+spy_data_create:
+    path: /api/dataobjects/{name}
+    defaults:
+        _controller: 'SpyBundle\Controller\Api\ApiController::createDataObject'
+        _format: json
+    methods: [POST]
+
+

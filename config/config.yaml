@@ -1,10 +1,55 @@
 imports:
     - { resource: 'local/' }
 
+pimcore_admin:
 
+    custom_admin_path_identifier: min20CharCustomToken
+
+    documents:
+        notes_events:
+            types:
+                - "mydocuments"
+                - "content"
+                - "seo"
+                - "some other type"
+    assets:
+        notes_events:
+            types:
+                - "myassets"
+                - "content"
+                - "licese renewal"
+                - "some other typ"
+    objects:
+        notes_events:
+            types:
+                - "myobject"
+                - "manual object data change"
+                - "some other types"
+
+    config_location:
+        admin_system_settings:
+            write_target:
+                type: 'settings-store'
 pimcore:
 
-# IMPORTANT Notice!
+    models:
+        class_overrides:
+            'Pimcore\Model\DataObject\Test': 'App\Model\DataObject\Test'
+
+    bundles:
+        search_paths:
+            - src/DemoBundle
+            - src/CheckBundle
+            - src/ProductBundle
+            - bundles/SpyBundle
+
+
+
+
+
+
+
+    # IMPORTANT Notice!
 # Following there are only some examples listed, for a full list of possible options, please run the following command:
 # ./bin/console debug:config pimcore
 # you can also filter them by path, eg.
@@ -35,7 +80,8 @@ pimcore:
 
 
 #### CUSTOM DOCUMENT EDITABLES
-#    documents:
+    documents:
+            auto_save_interval: 40
 #        allow_trailing_slash: 'yes'
 #        generate_preview: false
 #        tags:
@@ -44,7 +90,8 @@ pimcore:
 
 
 #### CUSTOM OBJECT DATA TYPES
-#    objects:
+    objects:
+            auto_save_interval: 40
 #        class_definitions:
 #            data:
 #                map:
@@ -100,6 +147,12 @@ pimcore:
 
 #### SYMFONY OVERRIDES
 framework:
+    messenger:
+        transports:
+            async: "%env(MESSENGER_TRANSPORT_DSN)%"
+
+        routing:
+            'ConnectBundle\Messenger\SmsNotification': async
 
 #### DEFINE LOCATION OF MANIFEST WHEN WORKING WITH SYMFONY ENCORE
 #    assets:
@@ -133,4 +186,18 @@ framework:
 #     return:
 #         name: ''
 #         email: ''
+
+doctrine_migrations:
+    migrations_paths:
+        'App\Migrations': '%kernel.project_dir%/src/Migrations'
+
+#monolog:
+#    handlers:
+#        custom_handler:
+#            type: stream
+#            path: '%kernel.logs_dir%/custom.log'
+#            level: debug
+#            channels: ['custom_log']
+#    channels: ['custom_log']
+
 

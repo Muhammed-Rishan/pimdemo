@@ -1,0 +1,30 @@
+
+<header class="bkground">
+    <div class="header-container">
+        <div class="headerWrap">
+            <div class="logo">
+                <a href="#">
+                    <h2>
+                        {{ pimcore_input("HOTEL", {"width": 240}) }}
+                    </h2>
+
+                </a>
+            </div>
+            <div class="header">
+                {% if not document is defined or not document %}
+                    {% set document = pimcore_document(11) %}
+                {% endif %}
+                {% set navStartNode = document.getProperty('navigationRoot') %}
+                {% if not navStartNode is instanceof('\\Pimcore\\Model\\Document\\Page') %}
+                    {% set navStartNode = pimcore_document(11) %}
+                {% endif %}
+
+                {% set mainNavigation = pimcore_build_nav({
+                    active: document,
+                    root: navStartNode
+                }) %}
+                {{ pimcore_render_nav(mainNavigation) }}
+            </div>
+        </div>
+    </div>
+</header>

@@ -12,14 +12,23 @@
   },
   "prefer-stable": true,
   "require": {
-    "pimcore/pimcore": "^11.0.4",
+    "doctrine/doctrine-migrations-bundle": "^3.3",
+    "matomo/device-detector": "^6.1",
+    "mtdowling/cron-expression": "^1.2",
     "pimcore/admin-ui-classic-bundle": "^1.0",
-    "symfony/runtime": "^6.2",
-    "symfony/dotenv": "^6.2"
+    "pimcore/bundle-generator": "^2.0",
+    "pimcore/pimcore": "^11.0.4",
+    "symfony/doctrine-messenger": "^6.4",
+    "symfony/dotenv": "^6.2",
+    "symfony/http-client": "^6.3",
+    "symfony/messenger": "^6.4",
+    "symfony/monolog-bundle": "^3.8",
+    "symfony/runtime": "^6.2"
   },
   "require-dev": {
     "codeception/codeception": "^5.0.3",
-    "codeception/module-symfony": "^3.1.0"
+    "codeception/module-symfony": "^3.1.0",
+    "symfony/maker-bundle": "^1.51"
   },
   "suggest": {
     "pimcore/data-hub": "Universal data interface for GraphQL, CSV and other formats"
@@ -27,7 +36,15 @@
   "autoload": {
     "psr-4": {
       "App\\": "src/",
-      "Pimcore\\Model\\DataObject\\": "var/classes/DataObject"
+      "Pimcore\\Model\\DataObject\\": "var/classes/DataObject",
+      "DemoBundle\\": "src/DemoBundle/src",
+      "CheckBundle\\": "src/CheckBundle/src",
+      "ProductBundle\\": "bundles/ProductBundle/src",
+      "SpyBundle\\": "bundles/SpyBundle/src",
+      "ConnectBundle\\": "bundles/ConnectBundle/src"
+
+
+
     }
   },
   "autoload-dev": {

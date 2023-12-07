@@ -1,0 +1,41 @@
+{% for i in pimcore_block('product').iterator %}
+ {% if editmode %}
+     {{ pimcore_relation("product") }}
+ {% else %}
+     {% set product = pimcore_relation("product").element %}
+     {% if product %}
+         <p>SKU: {{ product.sku }}</p>
+         <p>Product Title: {{ product.title|raw }}</p>
+         <p>Size: {{ product.size|raw }}</p>
+
+         <p>Color: {{ product.color }}</p>
+
+         {% if product.baseimage is not null %}
+             <p>Image:</p>
+             <img src="{{ product.baseimage.getThumbnail('Room').path }}" alt="Image">
+         {% endif %}
+     {% endif %}
+
+
+     {% if product.gallery is not empty %}
+         <h3>Image Gallery</h3>
+         <div class="image-gallery" style="max-width: 100%; overflow-x: auto; white-space: nowrap;">
+             {% for image in product.gallery %}
+                 <div class="image-item" style="display: inline-block; margin-right: 10px;">
+                     <img src="{{ image.thumbnail('Shirt') }}" style="max-width: 100px; height: auto;">
+                 </div>
+             {% endfor %}
+         </div>
+     {% else %}
+         <p>No images available in the gallery.</p>
+     {% endif %}
+ {% endif %}
+{% endfor %}
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+product:
+    resource: "@ProductBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+
+products:
+    path: /product/{id}
+    controller: ProductBundle\Controller\ProductController::indexAction
+
+send_sms:
+    path: /send-sms
+    controller: ConnectBundle\Controller\DefaultController::sendSmsAction
+    methods: [POST]

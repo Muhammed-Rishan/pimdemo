@@ -1,0 +1,85 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    SpyBundle\Controller\:
+        resource: '../src/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    SpyBundle\EventListener\AdminActivityListener:
+        arguments:
+            $logger: '@logger'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    SpyBundle\Model\AdminActivity\Dao:
+        autowire: true
+
+    SpyBundle\Command\DataObjectsCommand:
+        tags: [ 'console.command' ]
+
+    SpyBundle\Command\TextCommand:
+        tags: [ 'console.command' ]
+
+    spy.api_service:
+        class: SpyBundle\Service\ApiService
+        arguments:
+            $apiKey: '%env(API_KEY)%'
+            $logger: '@logger'
+        public: true
+
+    SpyBundle\Controller\Api\ApiController:
+        arguments:
+            $apiService: '@spy.api_service'
+
+    spy_bundle.event_listener.dataobject_save_listener:
+        class: SpyBundle\EventListener\DataObjectSaveListener
+        arguments:
+            $apiService: '@spy.api_service'
+            $httpClient: '@http_client'
+            $logger: '@pimcore.app_logger'
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onPostUpdate }
+
+
+    SpyBundle\Tool\Installer:
+        public: true
+#        arguments:
+#            $bundle: "@=service('kernel').getBundle('SpyBundle')"
+
+
+#    SpyBundle\Message\MessageHandler\DPEHandler:
+#        tags:
+#            - { name: 'messenger.message_handler' }
+
+#parameters:
+#    api_key: 'Rishan@23'
+
+
+
+
+
+#            $apiKey: '%api_key%'
+# add more services, or override services that need manual wiring
+#    SpyBundle\ExampleClass:
+#        arguments:
+#            - "@service_id"
+#            - "plain_value"
+#            - "%parameter%"
+
+#    spy_bundle.customs_logger:
+#        class: Monolog\Logger
+#        arguments: [ 'customs' ]
+#        calls:
+#            - [ pushHandler, [ '@monolog.handler.customs_log' ] ]
+#        public: true

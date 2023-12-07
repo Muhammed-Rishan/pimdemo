@@ -4,3 +4,50 @@ _pimcore:
 app:
     resource: "../src/Controller/"
     type: annotation
+
+room_preview:
+    path: '/room/{roomNumber}'
+    controller: 'App\Controller\RoomController::show'
+    requirements:
+        roomNumber: '\d+'
+
+asset_controller:
+    path: '/assets'
+    controller: 'App\Controller\AssetController'
+
+create_asset:
+    path: '/create-asset'
+    controller: 'App\Controller\AssetController::createAsset'
+
+update_asset:
+    path: '/update-asset/26'
+    controller: 'App\Controller\AssetController::updateAsset'
+    requirements:
+        id: '\d+'
+
+delete_asset:
+    path: '/delete-asset/29'
+    controller: 'App\Controller\AssetController::deleteAsset'
+    requirements:
+        id: '\d+'
+
+hotel_display:
+    path: /hotel/7
+    controller: App\Controller\HotelController::displayHotel
+
+custom_log:
+    path: /custom-log
+    controller: App\Controller\CustomLogController::someAction
+
+#my_custom_admin_entry_point:
+#    path: /my-custom-login-page
+#    controller: Pimcore\Bundle\CoreBundle\Controller\PublicServicesController::customAdminEntryPointAction
+
+my_custom_login_page:
+    path: /my-custom-login-page
+    controller: App\Controller\CustomAdminController::loginAction
+
+your_route:
+    path: /your-route
+    controller: App\Controller\SessionController::yourAction
+

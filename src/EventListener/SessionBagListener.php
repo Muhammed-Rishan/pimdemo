@@ -18,7 +18,6 @@ class SessionBagListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            // Run after Symfony\Component\HttpKernel\EventListener\SessionListener
             KernelEvents::REQUEST => ['onKernelRequest', 127],
         ];
     }

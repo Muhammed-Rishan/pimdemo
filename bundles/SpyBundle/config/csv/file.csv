@@ -1,2 +1,2 @@
-key,text,date,number,country,area,selection,location_latitude,location_longitude,description,filebrick_0/notes,demoCollection/0/datas
-nss,value,2023-08-21,25,Albania,qwertyuiopasdfghjkl,Option2,40.7128,-74.0060,this is my description,Some Notes,Some Data
+key,text,date,number,country,area,selection,location_latitude,location_longitude,description,filebrick_0/notes,texts,mrelation,demoCollection/0/datas,name,demo,mselect,block/0/names,descri,taskrelation_id
+nss,value,2023-08-21,25,Albania,qwertyuiopasdfghjkl,Option2,40.7128,-74.0060,this is my description,Some Notes that i ....,my new text,mage,Some Data.. that who written...,rishan kkk,my demo,"Option1,Option3","value12,value23",my new description,/Hotels/user

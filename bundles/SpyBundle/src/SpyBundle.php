@@ -5,6 +5,7 @@ namespace SpyBundle;
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 use Pimcore\Extension\Bundle\PimcoreBundleAdminClassicInterface;
 use Pimcore\Extension\Bundle\Traits\BundleAdminClassicTrait;
+use SpyBundle\Tool\Installer;
 
 class SpyBundle extends AbstractPimcoreBundle implements PimcoreBundleAdminClassicInterface
 {
@@ -23,4 +24,9 @@ class SpyBundle extends AbstractPimcoreBundle implements PimcoreBundleAdminClass
         ];
     }
 
+
+    public function getInstaller():Installer
+    {
+        return $this->container->get(Installer::class);
+    }
 }

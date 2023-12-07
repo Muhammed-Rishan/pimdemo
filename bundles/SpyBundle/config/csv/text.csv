@@ -1,0 +1,2 @@
+key,text,age,dob,country,mcountry,image,photo,mrelation,crelation,name,description,andisc,note,morelation,corelation,mmrelation,cmrelation,active,bool,select,state,mselect,newbrick_name,newbrick_number
+ABC,heiii riyo,23,2101-08-21,DZ,"AF,AL,DZ",/bk2.jpg,/Image/shirt.jpeg,/miImage.png,/roms.jpeg,rishan, what description_,another description_,simple note_mm,"/CSV/nss,/Hotels/Product","/Hotels/Product,/CSV/nss","/Hotel/Gallery/rom.jpeg,/Bikes/athe.jpeg,/Hotel/bikevdo2.mp4","/Bikes/athe.jpeg,/Hotel/Gallery/rom.jpeg",0,1,Option B,KER,"Opt C,Opt B",John Doe,42.5

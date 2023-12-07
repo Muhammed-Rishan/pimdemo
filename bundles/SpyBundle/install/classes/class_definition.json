@@ -1,0 +1,148 @@
+{
+  "id": "demo",
+  "title": "Demo",
+  "description": "",
+  "modificationDate": 1697518317,
+  "parentClass": "",
+  "implementsInterfaces": "",
+  "listingParentClass": "",
+  "useTraits": "",
+  "listingUseTraits": "",
+  "allowInherit": false,
+  "allowVariants": false,
+  "showVariants": false,
+  "layoutDefinitions": {
+    "name": "pimcore_root",
+    "type": null,
+    "region": null,
+    "title": null,
+    "width": 0,
+    "height": 0,
+    "collapsible": false,
+    "collapsed": false,
+    "bodyStyle": null,
+    "datatype": "layout",
+    "children": [
+      {
+        "name": "Layout",
+        "type": null,
+        "region": null,
+        "title": "",
+        "width": "",
+        "height": "",
+        "collapsible": false,
+        "collapsed": false,
+        "bodyStyle": "",
+        "datatype": "layout",
+        "children": [
+          {
+            "name": "relartionone",
+            "title": "Relartion one",
+            "tooltip": "",
+            "mandatory": false,
+            "noteditable": false,
+            "index": false,
+            "locked": false,
+            "style": "",
+            "permissions": null,
+            "fieldtype": "manyToOneRelation",
+            "relationType": true,
+            "invisible": false,
+            "visibleGridView": false,
+            "visibleSearch": false,
+            "classes": [
+              {
+                "classes": "Hotel"
+              }
+            ],
+            "displayMode": "grid",
+            "pathFormatterClass": "",
+            "assetInlineDownloadAllowed": false,
+            "assetUploadPath": "",
+            "allowToClearRelation": true,
+            "objectsAllowed": true,
+            "assetsAllowed": false,
+            "assetTypes": [],
+            "documentsAllowed": false,
+            "documentTypes": [],
+            "width": "",
+            "datatype": "data"
+          },
+          {
+            "name": "relationtwo",
+            "title": "Relation two",
+            "tooltip": "",
+            "mandatory": false,
+            "noteditable": false,
+            "index": false,
+            "locked": false,
+            "style": "",
+            "permissions": null,
+            "fieldtype": "manyToManyObjectRelation",
+            "relationType": true,
+            "invisible": false,
+            "visibleGridView": false,
+            "visibleSearch": false,
+            "classes": [
+              {
+                "classes": "Room"
+              }
+            ],
+            "displayMode": "grid",
+            "pathFormatterClass": "",
+            "maxItems": null,
+            "visibleFields": [],
+            "allowToCreateNewObject": false,
+            "allowToClearRelation": true,
+            "optimizedAdminLoading": false,
+            "enableTextSelection": false,
+            "visibleFieldDefinitions": [],
+            "width": "",
+            "height": "",
+            "datatype": "data"
+          }
+        ],
+        "locked": false,
+        "fieldtype": "panel",
+        "layout": null,
+        "border": false,
+        "icon": "",
+        "labelWidth": 100,
+        "labelAlign": "left"
+      }
+    ],
+    "locked": false,
+    "fieldtype": "panel",
+    "layout": null,
+    "border": false,
+    "icon": null,
+    "labelWidth": 100,
+    "labelAlign": "left"
+  },
+  "icon": "",
+  "group": "",
+  "showAppLoggerTab": false,
+  "linkGeneratorReference": "",
+  "previewGeneratorReference": "",
+  "compositeIndices": [],
+  "showFieldLookup": false,
+  "propertyVisibility": {
+    "grid": {
+      "id": true,
+      "key": false,
+      "path": true,
+      "published": true,
+      "modificationDate": true,
+      "creationDate": true
+    },
+    "search": {
+      "id": true,
+      "key": false,
+      "path": true,
+      "published": true,
+      "modificationDate": true,
+      "creationDate": true
+    }
+  },
+  "enableGridLocking": false
+}

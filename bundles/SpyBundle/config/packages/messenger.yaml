@@ -1,0 +1,6 @@
+framework:
+    messenger:
+        transports:
+            async: "%env(MESSENGER_TRANSPORT_DSN)%"
+        routing:
+            'SpyBundle\Message\DPE':  async

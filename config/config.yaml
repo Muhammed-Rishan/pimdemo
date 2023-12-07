@@ -147,6 +147,12 @@ pimcore:
 
 #### SYMFONY OVERRIDES
 framework:
+    messenger:
+        transports:
+            async: "%env(MESSENGER_TRANSPORT_DSN)%"
+
+        routing:
+            'ConnectBundle\Messenger\SmsNotification': async
 
 #### DEFINE LOCATION OF MANIFEST WHEN WORKING WITH SYMFONY ENCORE
 #    assets:

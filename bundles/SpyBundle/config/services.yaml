@@ -28,7 +28,48 @@ services:
     SpyBundle\Command\DataObjectsCommand:
         tags: [ 'console.command' ]
 
+    SpyBundle\Command\TextCommand:
+        tags: [ 'console.command' ]
 
+    spy.api_service:
+        class: SpyBundle\Service\ApiService
+        arguments:
+            $apiKey: '%env(API_KEY)%'
+            $logger: '@logger'
+        public: true
+
+    SpyBundle\Controller\Api\ApiController:
+        arguments:
+            $apiService: '@spy.api_service'
+
+    spy_bundle.event_listener.dataobject_save_listener:
+        class: SpyBundle\EventListener\DataObjectSaveListener
+        arguments:
+            $apiService: '@spy.api_service'
+            $httpClient: '@http_client'
+            $logger: '@pimcore.app_logger'
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onPostUpdate }
+
+
+    SpyBundle\Tool\Installer:
+        public: true
+#        arguments:
+#            $bundle: "@=service('kernel').getBundle('SpyBundle')"
+
+
+#    SpyBundle\Message\MessageHandler\DPEHandler:
+#        tags:
+#            - { name: 'messenger.message_handler' }
+
+#parameters:
+#    api_key: 'Rishan@23'
+
+
+
+
+
+#            $apiKey: '%api_key%'
 # add more services, or override services that need manual wiring
 #    SpyBundle\ExampleClass:
 #        arguments:

@@ -50,7 +50,7 @@ class TestListener
 
 
             if ($asset->getType() === 'image') {
-                // Perform specific actions for images
+
             }
         } elseif ($e instanceof DocumentEvent) {
             $document = $e->getDocument();

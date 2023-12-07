@@ -12,15 +12,18 @@
   },
   "prefer-stable": true,
   "require": {
+    "doctrine/doctrine-migrations-bundle": "^3.3",
     "matomo/device-detector": "^6.1",
     "mtdowling/cron-expression": "^1.2",
     "pimcore/admin-ui-classic-bundle": "^1.0",
     "pimcore/bundle-generator": "^2.0",
     "pimcore/pimcore": "^11.0.4",
+    "symfony/doctrine-messenger": "^6.4",
     "symfony/dotenv": "^6.2",
+    "symfony/http-client": "^6.3",
+    "symfony/messenger": "^6.4",
     "symfony/monolog-bundle": "^3.8",
-    "symfony/runtime": "^6.2",
-    "ext-yaml": "*"
+    "symfony/runtime": "^6.2"
   },
   "require-dev": {
     "codeception/codeception": "^5.0.3",
@@ -37,7 +40,9 @@
       "DemoBundle\\": "src/DemoBundle/src",
       "CheckBundle\\": "src/CheckBundle/src",
       "ProductBundle\\": "bundles/ProductBundle/src",
-      "SpyBundle\\": "bundles/SpyBundle/src"
+      "SpyBundle\\": "bundles/SpyBundle/src",
+      "ConnectBundle\\": "bundles/ConnectBundle/src"
+
 
 
     }

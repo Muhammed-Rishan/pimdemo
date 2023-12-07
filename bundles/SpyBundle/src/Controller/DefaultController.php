@@ -2,18 +2,24 @@
 
 namespace SpyBundle\Controller;
 
-use Pimcore\Controller\FrontendController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use SpyBundle\Message\DPE;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DefaultController extends FrontendController
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/spy")
      */
-    public function indexAction(Request $request): Response
+    public function index(MessageBusInterface $bus): JsonResponse
     {
-        return new Response('Hello world from spy');
+        $message = 'some message !';
+
+        $bus->dispatch(new DPE($message));
+
+
+        return new JsonResponse(['message' => $message]);
     }
 }

@@ -39,8 +39,7 @@ class AdminActivityListener implements EventSubscriberInterface
             return;
         }
 
-        // Check if the request path contains '/admin' to log only backend admin panel activity.
-        if (strpos($request->getPathInfo(), '/admin') !== false) {
+        if (str_contains($request->getPathInfo(), '/admin')) {
             // Determine the action
             $action = $this->determineAction($request);
 
@@ -60,7 +59,6 @@ class AdminActivityListener implements EventSubscriberInterface
         $activity->setTimestamp($timestamp);
         $activity->save();
 
-        // Use the Pimcore logger to log the activity
         Logger::info("Admin Activity - User ID: $adminUserId, Action: $action, Timestamp: $formattedTimestamp");
     }
 
@@ -80,18 +78,17 @@ class AdminActivityListener implements EventSubscriberInterface
 
         $pathInfo = $request->getPathInfo();
 
-        // Modify this logic to suit your specific requirements.
-        if (strpos($pathInfo, '/admin/document') !== false) {
+        if (str_contains($pathInfo, '/admin/document')) {
             return 'document';
-        } elseif (strpos($pathInfo, '/admin/asset') !== false) {
+        } elseif (str_contains($pathInfo, '/admin/asset')) {
             return 'asset';
-        } elseif (strpos($pathInfo, '/admin/object') !== false) {
+        } elseif (str_contains($pathInfo, '/admin/object')) {
             return 'objects';
-        } elseif (strpos($pathInfo, '/admin/classes') !== false) {
+        } elseif (str_contains($pathInfo, '/admin/classes')) {
             return 'classes';
-        } elseif (strpos($pathInfo, '/admin/login') !== false) {
+        } elseif (str_contains($pathInfo, '/admin/login')) {
             return 'login';
-        } elseif (strpos($pathInfo, '/admin/logout') !== false) {
+        } elseif (str_contains($pathInfo, '/admin/logout')) {
             return 'logout';
         } else {
             return 'unknown';
